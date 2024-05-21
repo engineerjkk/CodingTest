@@ -9,7 +9,6 @@ for _ in range(n):
 lst.sort()
 room=[]
 heapq.heappush(room,lst[0][1])
-
 for i in range(1,n):
     if lst[i][0]<room[0]:
         heapq.heappush(room,lst[i][1])
