@@ -1,11 +1,6 @@
 def solution(array, commands):
-    answer = []
-    for i in range(len(commands)):
-        tmp=[]
-        for j in range(commands[i][0]-1,commands[i][1]):
-            tmp.append(array[j])
-        tmp.sort()
-        idx=commands[i][2]-1
-        answer.append(tmp[idx])
+    answer=[]
+    for i,j,k in commands:
+        answer.append(sorted(array[i-1:j])[k-1])
         
     return answer
