@@ -1,25 +1,18 @@
 def solution(board, moves):
-    answer=0
-    def space(board,j):
-        for i in range(len(board)):
-            if board[i][j-1] !=0:
-                doll=board[i][j-1]
-                board[i][j-1] =0
-                return board,True,doll
-        return board,False,False
-    s=[]
-    for j in moves:
-        board,check,doll=space(board,j)
-        if check:
-            s.append(doll)
-            while True:
-                if len(s)>=2:
-                    if s[-2]==s[-1]:
-                        s.pop()
-                        s.pop()
-                        answer+=2
-                    else:
-                        break
-                else:
-                    break
+    stacklist = []
+    answer = 0
+
+    for i in moves:
+        for j in range(len(board)):
+            if board[j][i-1] != 0:
+                stacklist.append(board[j][i-1])
+                board[j][i-1] = 0
+
+                if len(stacklist) > 1:
+                    if stacklist[-1] == stacklist[-2]:
+                        stacklist.pop(-1)
+                        stacklist.pop(-1)
+                        answer += 2     
+                break
+
     return answer
