@@ -8,16 +8,16 @@ def solution(n, words):
         #끝말잇기 규칙 실패 경우
         if tmp and tmp[-1]!=word[0] :
             if cnt in dic2:
-                return [cnt,dic2[cnt]+1]
+                return [(i%n)+1, (i//n)+1]#[cnt,dic2[cnt]+1]
             else:
-                return [cnt,1]
+                return [(i%n)+1, (i//n)+1]#[cnt,1]
         #         return [cnt,1]
         ##몇번째 사람이 탈락하는지 출력
         if word in dic:
             if cnt in dic2:
-                return [cnt,dic2[cnt]+1]
+                return [(i%n)+1, (i//n)+1]#[cnt,dic2[cnt]+1]
             else:
-                return [cnt,1]
+                return [(i%n)+1, (i//n)+1]#[cnt,1]
         else:
             dic[word]=i+1
         # 몇번째말하는건지 입력
