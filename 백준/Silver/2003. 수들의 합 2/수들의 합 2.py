@@ -1,6 +1,5 @@
 import sys
 input = sys.stdin.readline
-import time
 n,m = map(int,input().split())
 lst=list(map(int,input().split()))
 
@@ -11,7 +10,6 @@ answer=0
 while end<n:
     if total==m:
         answer+=1
-    
     if total<m:
         end+=1
         if end==n:
@@ -21,6 +19,3 @@ while end<n:
         total-=lst[start]
         start+=1
 print(answer)
-        
-    
-    
