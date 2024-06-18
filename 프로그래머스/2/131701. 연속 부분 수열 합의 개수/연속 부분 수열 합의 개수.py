@@ -1,19 +1,12 @@
 def solution(elements):
-    answer = 0
+    n=len(elements)
+    result=set()
+    extended_elements=elements*2
     
-    li = list()
-    for k in range(len(elements)):
-        i = 0
-        j = k + 1
-        for _ in range(len(elements)):
-            if (j >= len(elements)):
-                li.append(sum(elements[i : ]) + sum(elements[ : j - len(elements)]))
-            else:
-                li.append(sum(elements[i : j]))
+    for i in range(n):
+        summation=0
+        for j in range(1,n+1):
+            summation+=extended_elements[i+j-1]
+            result.add(summation)
 
-            i += 1
-            j += 1
-    
-    answer = len(set(li))
-
-    return answer
+    return len(result)
