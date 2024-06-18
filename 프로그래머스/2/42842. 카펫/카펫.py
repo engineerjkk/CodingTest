@@ -1,4 +1,3 @@
-import math
 def solution(brown, yellow):
     
     def check(x,y):
