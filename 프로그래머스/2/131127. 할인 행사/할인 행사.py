@@ -1,11 +1,10 @@
+from collections import Counter
 def solution(want, number, discount):
-    answer, wants = 0, []
-    
-    for v, n in zip(want, number):
-        wants += [v]*n
-        
-    wants = sorted(wants)
-    for i in range(len(discount[:-len(wants)+1])):
-        answer += int(wants == sorted(discount[i:len(wants)+i]))
-            
+    dic={}
+    answer=0
+    for i,j in zip(want,number):
+        dic[i]=j
+    for i in range(len(discount)-9):
+        if dic==Counter(discount[i:i+10]):
+            answer+=1
     return answer
