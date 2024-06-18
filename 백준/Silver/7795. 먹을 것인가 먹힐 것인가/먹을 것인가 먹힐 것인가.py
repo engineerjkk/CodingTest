@@ -1,16 +1,15 @@
 import sys
 input = sys.stdin.readline
-t=int(input())
-answer=[]
-for _ in range(t):
+T=int(input())
+for _ in range(T):
     n,m=map(int,input().split())
     lst_n=list(map(int,input().split()))
     lst_m=list(map(int,input().split()))
     lst_n.sort()
     lst_m.sort()
-    cnt=0
-    main=0
     sub=0
+    main=0
+    cnt=0
     while main<n:
         if sub==m:
             cnt+=sub
@@ -21,6 +20,4 @@ for _ in range(t):
                 main+=1
             else:
                 sub+=1
-    answer.append(cnt)
-for i in answer:
-    print(i)
+    print(cnt)
