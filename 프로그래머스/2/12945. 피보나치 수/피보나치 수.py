@@ -4,4 +4,3 @@ def solution(n):
         a=s[-2]+s[-1]
         s.append(a)
     return s[-1]%1234567
-        
