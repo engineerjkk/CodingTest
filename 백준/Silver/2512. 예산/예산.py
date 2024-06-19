@@ -3,9 +3,9 @@ input = sys.stdin.readline
 n=int(input())
 lst=list(map(int,input().split()))
 limit=int(input())
-
-left=1
+left=0
 right=max(lst)
+lst.sort()
 while left<=right:
     mid=(left+right)//2
     total=0
@@ -17,3 +17,4 @@ while left<=right:
     else:
         right=mid-1
 print(answer)
+    
