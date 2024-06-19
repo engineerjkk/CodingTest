@@ -1,9 +1,8 @@
 def solution(arr1, arr2):
-    m,n,r = len(arr1),len(arr1[0]),len(arr2[0])
-    answer=[[0]*r for _ in range(m)]
-    for i in range(m):
-        for k in range(r):
-            for j in range(n):
-                answer[i][k]+=arr1[i][j]*arr2[j][k]
-    
+    n,m,r=len(arr1),len(arr1[0]),len(arr2[0])
+    answer=[[0]*r for _ in range(n)]
+    for i in range(n):
+        for j in range(r):
+            for k in range(m):
+                answer[i][j]+=arr1[i][k]*arr2[k][j]
     return answer
