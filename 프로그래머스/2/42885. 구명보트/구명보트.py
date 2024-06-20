@@ -3,8 +3,6 @@ def solution(people, limit):
     people.sort()
     left=0
     right=len(people)-1
-    total=0
-    50,50,70,80
     while left<=right:
         if people[left]+people[right]<=limit:
             answer+=1
@@ -13,5 +11,8 @@ def solution(people, limit):
         else:
             answer+=1
             right-=1
+        
     return answer
+            
+
         
