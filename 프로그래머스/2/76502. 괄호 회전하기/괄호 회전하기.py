@@ -3,29 +3,28 @@ def solution(s):
     
     def check(s):
         stack=[]
-        for i in range(len(s)):
+        for i in s:
             if len(stack)==0:
-                stack.append(s[i])
-            elif s[i]=="}" and stack[-1]=="{":
+                stack.append(i)
+            elif i=="}" and stack[-1]=="{":
                 stack.pop()
-            elif s[i]=="]" and stack[-1]=="[":
+            elif i=="]" and stack[-1]=="[":
                 stack.pop()
-            elif s[i]==")" and stack[-1]=="(":
+            elif i==")" and stack[-1]=="(":
                 stack.pop()
             else:
-                stack.append(s[i])
+                stack.append(i)
         if len(stack)==0:
             return True
         else:
             return False
-    answer=0
-    n=len(s)
+            
     queue=deque(s)
-    for _ in range(n):
+    answer=0
+    for _ in range(len(s)):
         if check(queue):
             answer+=1
         queue.rotate(-1)
-    return answer
-    
+    return answer    
     
     
