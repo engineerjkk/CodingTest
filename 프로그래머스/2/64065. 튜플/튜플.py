@@ -1,11 +1,10 @@
 def solution(s):
-    li=[]
-    for i in s.split("},"):
-        li.append(i.replace("{","").replace("}","").split(","))
-    li.sort(key=len)
+    data=s[2:-2].split("},{")
+    data=sorted(data,key=lambda x: len(x))
     answer=[]
-    for i in li:
-        for j in i:
-            if j not in answer:
-                answer.append(j)
-    return list(map(int,answer))
+    for item in data:
+        item = list(map(int,item.split(",")))
+        for value in item:
+            if value not in answer:
+                answer.append(value)
+    return answer
