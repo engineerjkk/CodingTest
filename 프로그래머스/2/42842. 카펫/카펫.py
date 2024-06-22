@@ -12,4 +12,3 @@ def solution(brown, yellow):
         for j in range(brown):
             if check(i,j):
                 return sorted([i+2,j+2],reverse=True)
-    
