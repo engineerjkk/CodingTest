@@ -1,31 +1,31 @@
-def to_k_number(n, k):
-    # n을 k진수로 변환하는 함수
-    ret = ""
-    while n > 0:
-        ret += str(n % k)
-        n = n // k
-    return ''.join(reversed(ret))
+def n_to_k(n,k):
+    ret=""
+    while n>0:
+        ret+=str(n%k)
+        n=n//k
+    return ret[::-1]
 
-def is_prime_num(k):
-    # 주어진 숫자가 소수인지 확인하는 함수
-    if k == 2 or k == 3:
+def check_prime(n):
+    if n==2 or n==3:
         return True
-    if k % 2 == 0 or k < 2:
+    if n%2==0 or n<2:
         return False
-    for i in range(3, int(k ** 0.5) + 1, 2):
-        if k % i == 0:
+    for i in range(3,int(n**(0.5))+1,2):
+        if n%i==0:
             return False
     return True
 
 def solution(n, k):
-    answer = 0
-    # n을 k진수로 변환
-    k_num = to_k_number(n, k)
-    # 0을 기준으로 문자열을 나누어 소수 후보들 추출
-    for num in k_num.split('0'):
-        if num == "":
+    num_k=n_to_k(n,k)
+    num_k=num_k.split("0")
+    answer=0
+    for i in num_k:
+        if i=="":
             continue
-        # 각 num이 소수인지 판별
-        if is_prime_num(int(num)):
-            answer += 1
+        if check_prime(int(i)):
+            answer+=1
     return answer
+        
+
+
+
