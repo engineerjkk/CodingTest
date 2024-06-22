@@ -1,11 +1,10 @@
 def solution(elements):
     n=len(elements)
-    elements2=elements*2
     answer=set()
+    elements2=elements*2
     for i in range(n):
-        summation=0
+        total=0
         for j in range(n):
-            summation+=elements2[i+j]
-            answer.add(summation)
+            total+=elements2[i+j]
+            answer.add(total)
     return len(answer)
-    
