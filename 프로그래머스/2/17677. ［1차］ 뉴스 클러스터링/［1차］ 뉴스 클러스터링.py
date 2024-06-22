@@ -1,22 +1,24 @@
-def checklist(strin):
-    arr=[]
-    for b in range(len(strin) - 1):
-        s = strin[b]+strin[b + 1]
-        if s.isalpha():
-            arr.append(s)
-            #print(arr)
-    return arr
+
+def transform(str1):
+    tmp=[]
+    for i in range(len(str1)-1):
+        a=str1[i]+str1[i+1]
+        if a.isalpha():
+            tmp.append(a)
+    return tmp
 
 def solution(str1, str2):
-    str1, str2 = checklist(str1.upper()), checklist(str2.upper())
-    union, intersection = [], []
-    if len(str1) > len(str2):
-        str1, str2 = str2, str1
-    for a in str1:
-        if a in str2:
-            str2.remove(a)
-            intersection.append(a)
-    union = str1 + str2
-    if len(union) == 0:
+    str1,str2=transform(str1.upper()),transform(str2.upper())
+    intersection=[]
+    for i in str1:
+        if i in str2:
+            str2.remove(i)
+            intersection.append(i)
+    union=str1+str2
+    if len(union)==0:
         return 65536
-    return int((len(intersection) / len(union)) * 65536)
+    answer=int((len(intersection)/len(union))*65536)
+    return answer
+
+
+    
