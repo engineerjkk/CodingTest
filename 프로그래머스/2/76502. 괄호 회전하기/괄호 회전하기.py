@@ -18,13 +18,15 @@ def solution(s):
             return True
         else:
             return False
-            
+    
+    n=len(s)
     queue=deque(s)
     answer=0
-    for _ in range(len(s)):
+    for _ in range(n):
         if check(queue):
             answer+=1
         queue.rotate(-1)
-    return answer    
+    return answer
     
+
     
