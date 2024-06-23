@@ -3,12 +3,14 @@ def solution(cacheSize, cities):
     queue=deque(maxlen=cacheSize)
     time=0
     for i in cities:
-        s=i.lower()
-        if s in queue:
-            queue.remove(s)
-            queue.append(s)
+        i=i.lower()
+        if i in queue:
+            queue.remove(i)
+            queue.append(i)
             time+=1
         else:
-            queue.append(s)
+            queue.append(i)
             time+=5
     return time
+        
+
