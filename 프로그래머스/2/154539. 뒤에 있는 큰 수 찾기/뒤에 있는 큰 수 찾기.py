@@ -1,5 +1,3 @@
-
-
 def solution(numbers):
     stack=[]
     answer=[-1]*len(numbers)
