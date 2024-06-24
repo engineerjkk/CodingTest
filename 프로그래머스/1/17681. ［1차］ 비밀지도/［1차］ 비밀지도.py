@@ -1,11 +1,14 @@
 def solution(n, arr1, arr2):
-    answer=[]
-    for i,j in zip(arr1,arr2):
-        a=str(bin(i|j))[2:]
-        a=a.rjust(n,"0")
-        a=a.replace("1","#")
-        a=a.replace("0"," ")
-        answer.append(a)
-        
-
-    return answer
+    ans=[]
+    for a,b in zip(arr1,arr2):
+        a=bin(a)[2:].rjust(n,"0")
+        b=bin(b)[2:].rjust(n,"0")
+        print(a,b)
+        ret=""
+        for i,j in zip(a,b):
+            if i=="1" or j=="1":
+                ret+="#"
+            else:
+                ret+=" "
+        ans.append(ret)
+    return ans
