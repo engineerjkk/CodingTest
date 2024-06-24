@@ -19,11 +19,11 @@ def check_prime(num):
         if num%i==0:
             return False
     return True
-        
 
 def solution(n, k):
     k_num=transform(n,k)
     k_num=k_num.split("0")
+    #k_num=list(map(int,k_num.split("0")))
     answer=0
     for i in k_num:
         if i=="":
@@ -31,5 +31,5 @@ def solution(n, k):
         if check_prime(int(i)):
             answer+=1
     return answer
-
+            
 
