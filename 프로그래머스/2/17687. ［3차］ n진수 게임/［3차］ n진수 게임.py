@@ -1,4 +1,7 @@
+  
 def transform(num,n):
+    if num==0:
+        return "0"
     numOver={10:"A",11:"B",12:"C",13:"D",14:"E",15:"F"}
     ret=""
     while num>0:
@@ -9,20 +12,20 @@ def transform(num,n):
             ret+=str(remainder)
         num=num//n
     return ret[::-1]
-            
-    
+        
 def solution(n, t, m, p):
-    answer=""
-    tmp="0"
+    total=""
     for i in range(t*m):
-        tmp+=transform(i,n)
+        total+=transform(i,n)
     p-=1
-    while p<=len(tmp):
-        answer+=tmp[p]
+    answer=""
+    while True:
         if len(answer)==t:
             return answer
+        answer+=total[p]
         p+=m
-    return answer
         
+    
+
 
         
