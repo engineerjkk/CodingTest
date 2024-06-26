@@ -1,15 +1,14 @@
 def solution(N, stages):
     result={}
     total=len(stages)
+    answer=[]
     for i in range(1,N+1):
         if total!=0:
-            count=stages.count(i)
-            result[i]=count/total
-            total-=count
+            clear=stages.count(i)
+            result[i]=clear/total
+            total-=clear
         else:
             result[i]=0
-    lst=sorted(result.items(),key=lambda x:x[1],reverse=True)
-    answer=[]
-    for key, value in lst:
+    for key,value in sorted(result.items(),key=lambda x:x[1],reverse=True):
         answer.append(key)
     return answer
