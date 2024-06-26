@@ -1,42 +1,34 @@
-from collections import deque
 def solution(numbers, hand):
     answer = ''
-    dic={}
-    keypad=[['1','2','3'],['4','5','6'],['7','8','9'],['*','0','#']]
-    for i in range(4):
-        for j in range(3):
-            if keypad[i][j] not in dic:
-                dic[keypad[i][j]]=(i,j)
-    l='147'
-    r='369'
-    m='2580'
-    l_now = "*"
-    r_now = "#"
+    keyPad={1:(0,0),2:(0,1),3:(0,2),4:(1,0),5:(1,1),6:(1,2),7:(2,0),8:(2,1),9:(2,2),0:(3,1)}
+    leftPad=[1,4,7]
+    rightPad=[3,6,9]
+    middlePad=[2,5,8,0]
+    left=(3,0)
+    right=(3,2)
     for i in numbers:
-        if str(i) in l:
-            answer+='L'
-            l_now=str(i)
-        elif str(i) in r:
-            answer+='R'
-            r_now=str(i)
-        elif str(i) in m:
-            l_0,l_1=dic[l_now]
-            r_0,r_1=dic[r_now]
-            tar_0,tar_1=dic[str(i)]
-            l_dis=abs(l_0-tar_0)+abs(l_1-tar_1)
-            r_dis=abs(r_0-tar_0)+abs(r_1-tar_1)
-            if l_dis>r_dis:
-                answer+='R'
-                r_now=str(i)
-            elif r_dis>l_dis:
-                answer+='L'
-                l_now=str(i)
+        if i in leftPad:
+            answer+="L"
+            left=keyPad[i]
+        elif i in rightPad:
+            answer+="R"
+            right=keyPad[i]
+        else:
+            r,c=keyPad[i]
+            left_distance=abs(r-left[0])+abs(c-left[1])
+            right_distance=abs(r-right[0])+abs(c-right[1])
+            if left_distance<right_distance:
+                left=(r,c)
+                answer+="L"
+            elif right_distance<left_distance:
+                right=(r,c)
+                answer+="R"
             else:
-                if hand=="right":
-                    answer+='R'
-                    r_now=str(i)
+                if hand=="left":
+                    left=(r,c)
+                    answer+="L"
                 else:
-                    answer+='L'
-                    l_now=str(i)
-            
+                    right=(r,c)
+                    answer+="R"
+                                
     return answer
