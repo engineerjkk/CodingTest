@@ -1,53 +1,35 @@
 def solution(new_id):
     answer = ''
-    check="abcdefghijklmnopqrstuvwxyz0123456789-_."
-    #1단계
-    print(new_id)
-    new_id=new_id.lower()
-    print(new_id)
-    #2단계
-    tmp=""
+    removed=["-","_","."]
     for i in new_id:
-        if i in check:
-            tmp+=i
-    new_id=tmp
-    #3단계
+        if i.isalpha() or i.isdecimal() or i in removed:
+            answer+=i
+    answer=answer.lower()
+    cnt=0
     while True:
-        if ".." in new_id:
-            new_id=new_id.replace("..",".")
-        else:
-            break
+        check=True
+        if ".." in answer:
+            answer=answer.replace("..",".")
+            check=False
+        if answer[0]==".":
+            answer=answer[1:]
+            check=False
+        elif answer[-1]==".":
+            answer=answer[:-1]
+            check=False
+        if len(answer)==0:
+            answer+="a"
+            check=False
 
-    #4단계
-    while len(new_id)>0:
-        if new_id[0]==".":
-            new_id=new_id[1:]
-        else:
+        if check:
             break
-    while len(new_id)>0:
-        if new_id[-1]==".":
-            new_id=new_id[:-1]
-        else:
-            break
-    #5단계
-    if len(new_id)==0:
-        new_id+="a"
-
-    #6단계
-
-    if len(new_id)>15:
-        new_id=new_id[:15]
-        while True:
-            if new_id[-1]!=".":
-                break
-            else:
-                new_id=new_id[:-1]
-            
-    if len(new_id)<=2:
-        a=new_id[-1]
-        while True:
-            new_id+=a
-            if len(new_id)==3:
-                break
-            
-    return new_id
+    tmp=answer[-1]
+    while len(answer)<3:
+        answer+=tmp
+        
+    if len(answer)>15:
+        answer=answer[:15]
+        check=False
+        if answer[-1]==".":
+            answer=answer[:-1]
+    return answer
