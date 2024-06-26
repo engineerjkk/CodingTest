@@ -1,18 +1,24 @@
+
+def move(r,c,board):
+    n=len(board)
+    while r<n:
+        if board[r][c]!=0:
+            caught_doll=board[r][c]
+            board[r][c]=0
+            return caught_doll
+        r+=1
+
 def solution(board, moves):
-    stacklist = []
     answer = 0
-
-    for i in moves:
-        for j in range(len(board)):
-            if board[j][i-1] != 0:
-                stacklist.append(board[j][i-1])
-                board[j][i-1] = 0
-
-                if len(stacklist) > 1:
-                    if stacklist[-1] == stacklist[-2]:
-                        stacklist.pop(-1)
-                        stacklist.pop(-1)
-                        answer += 2     
-                break
-
+    busket=[]
+    for c in moves:
+        c-=1
+        doll=move(0,c,board)
+        if len(busket)>0 and busket[-1]==doll:
+            busket.pop()
+            answer+=2
+        else:
+            if doll != None:
+                busket.append(doll)
+        
     return answer
