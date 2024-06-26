@@ -1,4 +1,3 @@
-  
 def transform(num,n):
     if num==0:
         return "0"
@@ -12,20 +11,22 @@ def transform(num,n):
             ret+=str(remainder)
         num=num//n
     return ret[::-1]
+               
+
         
 def solution(n, t, m, p):
-    total=""
+    
+    string=""
     for i in range(t*m):
-        total+=transform(i,n)
-    p-=1
+        string+=transform(i,n)
     answer=""
+    p-=1
     while True:
         if len(answer)==t:
-            return answer
-        answer+=total[p]
+            break
+        answer+=string[p]
         p+=m
-        
-    
+    return answer
 
 
         
