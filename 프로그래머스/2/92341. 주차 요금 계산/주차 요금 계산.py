@@ -1,8 +1,7 @@
 from collections import defaultdict
 from math import ceil
-
 class Parking:
-    def __init__ (self,fees):
+    def __init__(self,fees):
         self.fees=fees
         self.flag=False
         self.time=0
@@ -24,19 +23,13 @@ class Parking:
             return self.fees[1]
 def str2int(string):
     return int(string[:2])*60+int(string[3:])
-            
-            
-        
 
 def solution(fees, records):
     dic=defaultdict(lambda:Parking(fees))
     for record in records:
         time,car,inout=record.split()
         dic[car].update(time,inout)
-    
-    answer=[]
+    answer=[]    
     for key,value in sorted(dic.items()):
         answer.append(value.cal_price())
     return answer
-
-
