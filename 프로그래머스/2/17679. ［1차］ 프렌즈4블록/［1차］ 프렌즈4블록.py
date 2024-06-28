@@ -13,10 +13,8 @@ def check(n,m,board):
             if tmp[r][c]==1:
                 cnt+=1
                 board[r][c]="0"
-    
     if cnt==0:
         return 0
-    
     for r in range(n-2,-1,-1):
         for c in range(m):
             t=r
