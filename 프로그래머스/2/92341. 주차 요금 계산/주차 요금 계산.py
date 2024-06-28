@@ -29,7 +29,7 @@ def solution(fees, records):
     for record in records:
         time,car,inout=record.split()
         dic[car].update(time,inout)
-    answer=[]    
+    answer=[]
     for key,value in sorted(dic.items()):
         answer.append(value.cal_price())
     return answer
