@@ -9,6 +9,7 @@ def check(per,ban):
         if per[i]!=ban[i]:
             return False
     return True
+
 def solution(user_id, banned_id):
     answer = []
     n=len(banned_id)
@@ -19,5 +20,5 @@ def solution(user_id, banned_id):
                 flag=False
         if flag:
             if set(permu) not in answer:
-                answer.append(set(permu))    
+                answer.append(set(permu))
     return len(answer)
