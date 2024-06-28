@@ -19,5 +19,6 @@ def solution(queue1, queue2):
             sum2+=num
         answer+=1
         if answer==limit:
-            return -1        
+            return -1
+            
     return answer
