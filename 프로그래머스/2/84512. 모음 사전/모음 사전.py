@@ -1,10 +1,9 @@
 from itertools import product
 def solution(word):
-    words=["A","E","I","O","U"]
-    tmp=[]
+    lst=["A","E","I","O","U"]
+    answer=[]
     for i in range(1,6):
-        for x in list(product(words,repeat=i)):
-            #print("".join(list(x)))
-            tmp.append("".join(list(x)))
-    tmp.sort()
-    return tmp.index(word)+1
+        for x in list(product(lst,repeat=i)):
+            answer.append("".join(x))
+    answer.sort()
+    return answer.index(word)+1
