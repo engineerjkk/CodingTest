@@ -11,8 +11,8 @@ def check(per,ban):
     return True
 
 def solution(user_id, banned_id):
-    answer = []
     n=len(banned_id)
+    answer=[]
     for permu in permutations(user_id,n):
         flag=True
         for i in range(n):
