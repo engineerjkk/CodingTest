@@ -20,5 +20,4 @@ def solution(queue1, queue2):
         answer+=1
         if answer==limit:
             return -1
-            
     return answer
