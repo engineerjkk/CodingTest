@@ -38,7 +38,7 @@ while low<=high:
             check[hash]=[i]
 
         #해쉬값을 갱신
-        hash+=mod-(ord(S[i]) - ord("a")+1)*po[mid-1]
+        hash-=((ord(S[i]) - ord("a")+1)*po[mid-1])%mod
         hash*=31
         hash%=mod
         if i+mid<L:
