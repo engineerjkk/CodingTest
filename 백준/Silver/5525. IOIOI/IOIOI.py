@@ -1,16 +1,18 @@
-import sys
-input = sys.stdin.readline
-n=int(input())
-m=int(input())
-s=str(input())
+N = int(input())
+M = int(input())
+S = input()
 
-value="I"
-for i in range(n):
-    value+="OI"
-len_value=len(value)
-cnt=0
-for i in range(m-len_value+1): 
-    a=s[i:i+len_value]
-    if a==value:
-        cnt+=1
-print(cnt)
+cursor, count, result = 0, 0, 0
+
+while cursor < (M - 1):
+    if S[cursor:cursor + 3] == 'IOI': #3칸
+        count += 1
+        cursor += 2
+        if count == N:
+            result += 1
+            count -= 1
+    else:
+        cursor += 1
+        count = 0
+
+print(result)
