@@ -15,11 +15,9 @@ for i in range(n):
     while True:
         if u==R:
             black[i]=1
-            break
         if u==root:
             break
         u=parent[u]
-
 red=[0]*n
 for i in range(n):
     if black[i]==1:
@@ -34,3 +32,4 @@ for i in range(n):
         continue
     cnt+=1
 print(cnt)
+            
