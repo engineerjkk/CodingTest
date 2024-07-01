@@ -19,7 +19,7 @@ while left<=right:
     for i in range(mid):
         hash*=31
         hash%=mod
-        hash+=ord(s[i])-ord("a")+1
+        hash+=(ord(s[i])-ord("a")+1)
         hash%=mod
     
     check={}
@@ -34,12 +34,12 @@ while left<=right:
                 break
         else:
             check[hash]=[i]
-
+        
         hash-=((ord(s[i])-ord("a")+1)*po[mid-1])%mod
         hash*=31
-        if i+mid<n:
-            hash+=(ord(s[i+mid])-ord("a")+1)
-            hash%=mod
+        hash+=ord(s[i+mid])-ord("a")+1
+        hash%=mod
+
 
     if found:
         answer=mid
