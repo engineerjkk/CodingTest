@@ -1,6 +1,6 @@
 import sys
 import heapq
-input=sys.stdin.readline
+input = sys.stdin.readline
 V,E=map(int,input().split())
 K=int(input())
 
@@ -10,20 +10,21 @@ for _ in range(E):
     graph[u].append((v,w))
 
 distance=[1e9]*(V+1)
-distance[K]=0
+
 def dijkstra(start):
     queue=[]
     heapq.heappush(queue,(0,start))
-    
+    distance[start]=0
+
     while queue:
-        dis,now = heapq.heappop(queue)
+        dis,now=heapq.heappop(queue)
         if distance[now]<dis:
             continue
         for v,w in graph[now]:
             cost=dis+w
             if cost<distance[v]:
                 distance[v]=cost
-                heapq.heappush(queue,(cost,v))    
+                heapq.heappush(queue,(cost,v))
 
 
 dijkstra(K)
