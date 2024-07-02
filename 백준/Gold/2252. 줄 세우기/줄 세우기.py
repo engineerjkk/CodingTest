@@ -1,12 +1,11 @@
 import sys
 input = sys.stdin.readline
 from collections import deque
-
 n,m=map(int,input().split())
 lst=[[] for _ in range(n)]
 tmp=[0]*n
 
-for i in range(m):
+for _ in range(m):
     a,b=map(int,input().split())
     lst[a-1].append(b-1)
     tmp[b-1]+=1
@@ -24,5 +23,5 @@ while queue:
         tmp[i]-=1
         if tmp[i]==0:
             queue.append(i)
-for i in range(n):
-    print(answer[i]+1,end=" ")
+for i in answer:
+    print(i+1,end=" ")
