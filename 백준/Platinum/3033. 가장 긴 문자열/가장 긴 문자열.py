@@ -2,7 +2,6 @@ import sys
 input = sys.stdin.readline
 n=int(input())
 s=str(input())
-
 mod=1e9+7
 po=[0]*n
 po[0]=1
@@ -10,7 +9,7 @@ for i in range(1,n):
     po[i]=(po[i-1]*31)%mod
 
 left=1
-right=n-1
+right=len(s)-1
 answer=0
 while left<=right:
     mid=(left+right)//2
@@ -20,7 +19,7 @@ while left<=right:
     for i in range(mid):
         hash*=31
         hash%=mod
-        hash+=ord(s[i])-ord("a")+1
+        hash+=(ord(s[i])-ord("a")+1)
         hash%=mod
     
     check={}
@@ -35,9 +34,9 @@ while left<=right:
                 break
         else:
             check[hash]=[i]
+        
         hash-=((ord(s[i])-ord("a")+1)*po[mid-1])%mod
         hash*=31
-        hash%=mod
         hash+=(ord(s[i+mid])-ord("a")+1)
         hash%=mod
 
