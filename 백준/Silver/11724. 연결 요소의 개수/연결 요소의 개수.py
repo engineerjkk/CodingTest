@@ -2,32 +2,45 @@ import sys
 input = sys.stdin.readline
 from collections import deque
 n,m=map(int,input().split())
-lst=[[] for _ in range(n+1)]
+lst=[[] for _ in range(n)]
 for _ in range(m):
     a,b=map(int,input().split())
-    lst[a].append(b)
-    lst[b].append(a)
-
-visit=[False]*(n+1)
+    lst[a-1].append(b-1)
+    lst[b-1].append(a-1)
+visit=[False]*n
 
 def bfs(i):
     queue=deque()
     queue.append(i)
     visit[i]=True
+
     while queue:
         q=queue.popleft()
         for j in lst[q]:
             if not visit[j]:
-                queue.append(j)
                 visit[j]=True
-    return True
+                queue.append(j)
 
+def dfs(i):
+    stack=[i]
+    visit[i]=True
+    while stack:
+        node=stack.pop()
+        for j in lst[node]:
+            if not visit[j]:
+                visit[j]=True
+                stack.append(j)
 
-cnt=0
-for i in range(1,n+1):
+def dfs_recursive(i):
+    visit[i]=True
+    
+    for j in lst[i]:
+        if not visit[j]:
+            dfs_recursive(j)
+
+answer=0
+for i in range(n):
     if visit[i]==False:
-        bfs(i)
-        cnt+=1
-print(cnt)
-
-
+        dfs_recursive(i)
+        answer+=1
+print(answer)
