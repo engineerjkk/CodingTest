@@ -1,28 +1,27 @@
 import sys
-import heapq
 input = sys.stdin.readline
+import heapq
 V,E=map(int,input().split())
 K=int(input())
-graph=[[] for _ in range(V+1)]
+distance=[1e9]*(V+1)
+lst=[[] for _ in range(V+1)]
 for _ in range(E):
     u,v,w=map(int,input().split())
-    graph[u].append((v,w))
-distance=[1e9]*(V+1)
+    lst[u].append((v,w))
 
 def dijkstra(start):
-    queue=[]
-    heapq.heappush(queue,(0,start))
+    pq=[]
+    heapq.heappush(pq,(0,start))
     distance[start]=0
-
-    while queue:
-        dis,now=heapq.heappop(queue)
+    while pq:
+        dis,now = heapq.heappop(pq)
         if distance[now]<dis:
             continue
-        for v,w in graph[now]:
+        for v,w in lst[now]:
             cost=dis+w
             if cost<distance[v]:
                 distance[v]=cost
-                heapq.heappush(queue,(cost,v))
+                heapq.heappush(pq,(cost,v))
 
 
 dijkstra(K)
@@ -32,4 +31,3 @@ for i in range(1,V+1):
         print("INF")
     else:
         print(distance[i])
-
