@@ -1,18 +1,18 @@
-import sys
-input = sys.stdin.readline
-n=int(input())
-m=int(input())
-s=str(input())
+N = int(input())
+M = int(input())
+S = input()
 
-current,cnt,answer=0,0,0
-while current<m-1:
-    if s[current:current+3]=="IOI":
-        current+=2
-        cnt+=1
-        if cnt==n:
-            cnt-=1
-            answer+=1
+cursor, count, result = 0, 0, 0
+
+while cursor < (M - 1):
+    if S[cursor:cursor + 3] == 'IOI': #3칸
+        count += 1
+        cursor += 2
+        if count == N:
+            result += 1
+            count -= 1
     else:
-        cnt=0
-        current+=1
-print(answer)
+        cursor += 1
+        count = 0
+
+print(result)
