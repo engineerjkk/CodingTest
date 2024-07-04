@@ -1,5 +1,6 @@
 import sys
 input = sys.stdin.readline
+
 n=int(input())
 s=[]
 for _ in range(n):
@@ -20,3 +21,4 @@ for i in range(1,n):
     else:
         b[i]=s[i]+s[i-1]
 print(max(a[-1],b[-1]))
+
