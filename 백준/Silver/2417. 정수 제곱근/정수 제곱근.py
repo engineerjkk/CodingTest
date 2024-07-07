@@ -6,7 +6,6 @@ right=2**63
 answer=0
 while left<=right:
     mid=(left+right)//2
-
     if mid**2<n:
         left=mid+1
     else:
