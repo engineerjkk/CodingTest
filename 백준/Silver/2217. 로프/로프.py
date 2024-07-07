@@ -2,12 +2,10 @@ import sys
 input = sys.stdin.readline
 n=int(input())
 lst=[]
-for i in range(n):
+for _ in range(n):
     lst.append(int(input()))
-
 lst.sort(reverse=True)
-
-max_weight=0
-for i in range(n):
-    max_weight=max(max_weight,lst[i]*(i+1))
-print(max_weight)
+MAX=0
+for i in range(1,len(lst)+1):
+    MAX=max(MAX,lst[i-1]*i)
+print(MAX)
