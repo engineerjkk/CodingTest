@@ -1,9 +1,7 @@
-#import sys
-#input = sys.stdin.readline
 T=int(input())
 check={"A","B","C","D","E","F"}
 for _ in range(T):
-    s=input()
+    s=str(input())
     if len(s)<3:
         print("Good")
         continue
@@ -12,18 +10,16 @@ for _ in range(T):
             print("Good")
             continue
         s=s[1:]
-    if s[-1] !="C":
+    if s[-1]!="C":
         if s[-1] not in check:
             print("Good")
             continue
         s=s[:-1]
-    ans=""
-    for i in range(len(s)):
-        if i==0 or s[i]!=s[i-1]:
+    ans=s[0]
+    for i in range(1,len(s)):
+        if s[i]!=s[i-1]:
             ans+=s[i]
     if ans=="AFC":
         print("Infected!")
     else:
         print("Good")
-        
-        
