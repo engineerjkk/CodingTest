@@ -1,7 +1,7 @@
 T=int(input())
 check={"A","B","C","D","E","F"}
 for _ in range(T):
-    s=str(input())
+    s=input()
     if len(s)<3:
         print("Good")
         continue
