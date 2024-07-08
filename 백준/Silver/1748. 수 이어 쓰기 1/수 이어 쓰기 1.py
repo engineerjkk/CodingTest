@@ -1,8 +1,6 @@
 import sys
-input=sys.stdin.readline
-n=int(input())
-answer=0
-
+input = sys.stdin.readline
+n = int(input())
 left=[
     1,
     10,
@@ -23,13 +21,13 @@ right=[
     999999,
     9999999,
     99999999,
-    999999999
+    999999999,
 ]
-sum=0
+answer=0
 for i in range(len(left)):
-    if n>=left[i] and n<=right[i]:
-        sum+=(n-left[i]+1)*(i+1)
+    if left[i]<=n<=right[i]:
+        answer+=(n-left[i]+1)*(i+1)
         break
     else:
-        sum+=(right[i]-left[i]+1)*(i+1)
-print(sum)
+        answer+=(right[i]-left[i]+1)*(i+1)
+print(answer)
