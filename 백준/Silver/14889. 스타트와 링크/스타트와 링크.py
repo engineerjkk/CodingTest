@@ -2,30 +2,31 @@ import sys
 input = sys.stdin.readline
 from itertools import combinations
 n=int(input())
-lst=[]
+space=[]
 for _ in range(n):
-    lst.append(list(map(int,input().split())))
+    space.append(list(map(int,input().split())))
 
-tmp=[]
+lst=[]
 for i in range(n):
-    tmp.append(i)
+    lst.append(i)
+
 MIN=sys.maxsize
-for nCr in combinations(tmp,n//2):
-    start=list(nCr)
+for start in combinations(lst,n//2):
     link=[]
-    for i in range(n):
+    for i in lst:
         if i not in start:
             link.append(i)
-    
-    startSum=0
-    linkSum=0
-    
+    sum_start=0
     for i in start:
         for j in start:
-            startSum+=lst[i][j]
+            sum_start+=space[i][j]
+    sum_link=0
     for i in link:
         for j in link:
-            linkSum+=lst[i][j]
-    MIN=min(MIN,abs(startSum-linkSum))
-print(MIN)
+            sum_link+=space[i][j]
 
+
+    MIN=min(MIN,abs(sum_start-sum_link))
+print(MIN)
+    
+    
