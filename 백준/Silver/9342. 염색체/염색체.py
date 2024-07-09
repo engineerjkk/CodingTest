@@ -1,25 +1,25 @@
 T=int(input())
 check={"A","B","C","D","E","F"}
-answer=[]
 for _ in range(T):
-    s=str(input())
+    s=input()
+    if len(s)<3:
+        print("Good")
+        continue
     if s[0]!="A":
         if s[0] not in check:
-            answer.append("Good")
+            print("Good")
             continue
         s=s[1:]
     if s[-1]!="C":
         if s[-1] not in check:
-            answer.append("Good")
+            print("Good")
             continue
         s=s[:-1]
-    tmp=s[0]
+    ans=s[0]
     for i in range(1,len(s)):
         if s[i]!=s[i-1]:
-            tmp+=s[i]
-    if tmp=="AFC":
-        answer.append("Infected!")
+            ans+=s[i]
+    if ans=="AFC":
+        print("Infected!")
     else:
-        answer.append("Good")
-for i in answer:
-    print(i)
+        print("Good")
