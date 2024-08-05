@@ -2,14 +2,16 @@ import sys
 input = sys.stdin.readline
 n=int(input())
 lst=[[] for _ in range(n+1)]
+
 for _ in range(n-1):
     a,b=map(int,input().split())
     lst[a].append(b)
     lst[b].append(a)
 
-def dfs(i):
-    visit[i]=True
-    stack=[i]
+
+def dfs(root):
+    stack=[root]
+    visit[root]=True
     while stack:
         node=stack.pop()
         for j in lst[node]:
@@ -24,4 +26,3 @@ root=1
 dfs(root)
 for i in range(2,n+1):
     print(answer[i])
-
