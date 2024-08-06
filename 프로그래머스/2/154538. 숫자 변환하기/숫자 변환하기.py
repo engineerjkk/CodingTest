@@ -1,13 +1,18 @@
 def solution(x, y, n):
-    inf=1e9
-    dp = [inf for _ in range(3*y+1)]
-    dp[x] = 0
-
-    for i in range(x, y+1):
-
-        dp[i+n] = min(dp[i+n], dp[i]+1)
-        dp[i*2] = min(dp[i*2], dp[i]+1)
-        dp[i*3] = min(dp[i*3], dp[i]+1)
-
-    #print(dp)
-    return dp[y] if dp[y] < 1000000 else -1
+    answer=0
+    s=set()
+    s.add(x)
+    while s:
+        if y in s:
+            return answer
+        nxt=set()
+        for i in s:
+            if i+n<=y:
+                nxt.add(i+n)
+            if i*2<=y:
+                nxt.add(i*2)
+            if i*3<=y:
+                nxt.add(i*3)
+        s=nxt
+        answer+=1
+    return -1
