@@ -1,5 +1,5 @@
 def solution(x, y, n):
-    answer=0
+    answer = 0
     s=set()
     s.add(x)
     while s:
@@ -15,4 +15,5 @@ def solution(x, y, n):
                 nxt.add(i*3)
         s=nxt
         answer+=1
+            
     return -1
