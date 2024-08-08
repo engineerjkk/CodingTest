@@ -5,15 +5,14 @@ def solution(x, y, n):
     while s:
         if y in s:
             return answer
-        nxt=set()
+        nxt_set=set()
         for i in s:
-            if i+n<=y:
-                nxt.add(i+n)
+            if i+n <=y:
+                nxt_set.add(i+n)
             if i*2<=y:
-                nxt.add(i*2)
+                nxt_set.add(i*2)
             if i*3<=y:
-                nxt.add(i*3)
-        s=nxt
+                nxt_set.add(i*3)
+        s=nxt_set
         answer+=1
-            
     return -1
