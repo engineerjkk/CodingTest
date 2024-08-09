@@ -1,18 +1,18 @@
 def solution(x, y, n):
-    answer = 0
     s=set()
     s.add(x)
+    answer=0
     while s:
         if y in s:
             return answer
-        nxt_set=set()
+        nxt=set()
         for i in s:
-            if i+n <=y:
-                nxt_set.add(i+n)
+            if i+n<=y:
+                nxt.add(i+n)
             if i*2<=y:
-                nxt_set.add(i*2)
+                nxt.add(i*2)
             if i*3<=y:
-                nxt_set.add(i*3)
-        s=nxt_set
+                nxt.add(i*3)
         answer+=1
+        s=nxt
     return -1
