@@ -14,5 +14,5 @@ def solution(x, y, n):
             if i*3<=y:
                 nxt.add(i*3)
         answer+=1
-        s=nxt
+        s=nxt   
     return -1
