@@ -13,5 +13,4 @@ def solution(n):
                 col-=1
             answer[row][col]=cnt
             cnt+=1
-                
     return list(chain(*answer))
