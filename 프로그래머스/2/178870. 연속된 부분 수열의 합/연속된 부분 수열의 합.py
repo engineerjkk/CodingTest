@@ -1,6 +1,6 @@
 def solution(sequence, k):
     answer = [0,len(sequence)]
-    right=left=0
+    left=right=0
     sum=sequence[0]
     while right<len(sequence):
         if sum<k:
