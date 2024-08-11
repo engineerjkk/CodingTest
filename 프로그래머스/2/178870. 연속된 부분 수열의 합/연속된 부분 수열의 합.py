@@ -1,8 +1,8 @@
 def solution(sequence, k):
     answer = [0,len(sequence)]
+    right=left=0
     sum=sequence[0]
-    left=right=0
-    while True:
+    while right<len(sequence):
         if sum<k:
             right+=1
             if right==len(sequence):
@@ -14,5 +14,4 @@ def solution(sequence, k):
                     answer=[left,right]
             sum-=sequence[left]
             left+=1
-            
     return answer
