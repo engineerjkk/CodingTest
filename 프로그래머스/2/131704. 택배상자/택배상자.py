@@ -1,8 +1,9 @@
 def solution(order):
     i=1
     idx=0
+    n=len(order)
     stack=[]
-    while i<len(order)+1:
+    while i<n+1:
         stack.append(i)
         while stack[-1]==order[idx]:
             stack.pop()
