@@ -1,5 +1,5 @@
 def solution(storey):
-    answer=0
+    answer = 0
     while storey:
         remainder=storey%10
         if remainder>5:
@@ -11,5 +11,5 @@ def solution(storey):
             if (storey//10)%10>4:
                 storey+=10
             answer+=remainder
-        storey//=10
+        storey//=10            
     return answer
