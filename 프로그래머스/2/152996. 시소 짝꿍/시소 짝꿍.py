@@ -1,7 +1,7 @@
 from collections import Counter
 def solution(weights):
+    answer = 0
     counter=Counter(weights)
-    answer=0
     for key,value in counter.items():
         if value>=2:
             answer+=value*(value-1)//2
@@ -14,4 +14,5 @@ def solution(weights):
             answer+=counter[w*2/4]*counter[w]
         if w*3/4 in weights:
             answer+=counter[w*3/4]*counter[w]
+    
     return answer
