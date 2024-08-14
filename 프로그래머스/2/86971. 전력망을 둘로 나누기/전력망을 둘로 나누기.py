@@ -1,6 +1,6 @@
 from collections import deque
 def solution(n, wires):
-    answer=n
+    answer = n
     graph=[[] for _ in range(n+1)]
     for a,b in wires:
         graph[a].append(b)
@@ -8,10 +8,10 @@ def solution(n, wires):
     
     def bfs(start):
         cnt=0
-        queue=deque()
-        queue.append(start)
         visit=[False]*(n+1)
         visit[start]=True
+        queue=deque()
+        queue.append(start)
         while queue:
             q=queue.popleft()
             for i in graph[q]:
@@ -27,5 +27,4 @@ def solution(n, wires):
         answer=min(answer,abs(bfs(a)-bfs(b)))
         graph[a].append(b)
         graph[b].append(a)
-        
     return answer
