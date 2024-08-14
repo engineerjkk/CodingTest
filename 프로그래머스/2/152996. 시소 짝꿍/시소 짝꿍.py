@@ -2,7 +2,7 @@ from collections import Counter
 def solution(weights):
     answer = 0
     counter=Counter(weights)
-    for key,value in counter.items():
+    for key, value in counter.items():
         if value>=2:
             answer+=value*(value-1)//2
     weights=set(weights)
