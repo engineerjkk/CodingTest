@@ -7,11 +7,11 @@ def solution(n, wires):
         graph[b].append(a)
     
     def bfs(start):
-        cnt=0
-        visit=[False]*(n+1)
-        visit[start]=True
         queue=deque()
         queue.append(start)
+        visit=[False]*(n+1)
+        visit[start]=True
+        cnt=0
         while queue:
             q=queue.popleft()
             for i in graph[q]:
@@ -20,7 +20,6 @@ def solution(n, wires):
                     queue.append(i)
                     cnt+=1
         return cnt
-    
     for a,b in wires:
         graph[a].remove(b)
         graph[b].remove(a)
