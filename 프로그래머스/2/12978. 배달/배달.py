@@ -1,30 +1,26 @@
-from heapq import heappop, heappush
-
+import heapq
 def solution(N, road, K):
-    answer = 0
-    distance = [1e9] * (N+1)
-    graph = [[] for _ in range(N+1)]
-    for a,b,c in road:
-        graph[a].append((b,c))
-        graph[b].append((a,c))
-    
-    distance[1] = 0
-    h = [(0,1)]
-    
-    while h:
-        dis, node = heappop(h)
-        
-        if distance[node] < dis:
-            continue
-        
-        for next_node, next_dis in graph[node]:
-            d = dis + next_dis
-            if distance[next_node] > d:
-                distance[next_node] = d
-                heappush(h, (d,next_node))
-            
-    for d in distance[1:]:
-        if d <= K:
-            answer += 1
-    
+    answer=0
+    graph=[[]for _ in range(N+1)]
+    for u,v,w in road:
+        graph[u].append((v,w))
+        graph[v].append((u,w))
+    distance=[1e9]*(N+1)
+    def dijkstra(start):
+        pq=[]
+        heapq.heappush(pq,(0,start))
+        distance[start]=0
+        while pq:
+            dis,now = heapq.heappop(pq)
+            if distance[now]<dis:
+                continue
+            for v,w in graph[now]:
+                cost=dis+w
+                if cost<distance[v]:
+                    distance[v]=cost
+                    heapq.heappush(pq,(cost,v))
+    dijkstra(1)
+    for i in range(1,N+1):
+        if distance[i]<=K:
+            answer+=1
     return answer
