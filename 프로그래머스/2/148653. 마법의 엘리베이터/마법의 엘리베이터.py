@@ -11,6 +11,5 @@ def solution(storey):
             if (storey//10)%10>4:
                 storey+=10
             answer+=remainder
-            
-        storey//=10
+        storey=storey//10
     return answer
