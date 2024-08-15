@@ -7,16 +7,14 @@ def solution(book_time):
         end=int(e[:2])*60+int(e[3:])
         book_time_ref.append((start,end))
     book_time_ref.sort()
-    
-    heap=[]
+    pq=[]
     for s,e in book_time_ref:
-        if not heap:
-            heapq.heappush(heap,e+10)
+        if not pq:
+            heapq.heappush(pq,e+10)
             continue
-        if heap[0]<=s:
-            heapq.heappop(heap)
+        if pq[0]<=s:
+            heapq.heappop(pq)
         else:
             answer+=1
-        heapq.heappush(heap,e+10)
-        
+        heapq.heappush(pq,e+10)
     return answer
