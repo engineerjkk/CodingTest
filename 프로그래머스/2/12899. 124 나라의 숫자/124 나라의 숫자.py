@@ -1,6 +1,6 @@
 def solution(n):
-    num=['1','2','4']
     answer = ''
+    num=['1','2','4']
     while n:
         n-=1
         answer=num[n%3]+answer
