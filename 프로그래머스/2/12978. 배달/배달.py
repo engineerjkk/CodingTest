@@ -1,7 +1,7 @@
 import heapq
 def solution(N, road, K):
     answer=0
-    graph=[[]for _ in range(N+1)]
+    graph=[[] for _ in range(N+1)]
     for u,v,w in road:
         graph[u].append((v,w))
         graph[v].append((u,w))
@@ -11,7 +11,7 @@ def solution(N, road, K):
         heapq.heappush(pq,(0,start))
         distance[start]=0
         while pq:
-            dis,now = heapq.heappop(pq)
+            dis,now=heapq.heappop(pq)
             if distance[now]<dis:
                 continue
             for v,w in graph[now]:
