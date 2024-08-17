@@ -1,6 +1,7 @@
 def shap_to_lower(s):
-    s=s.replace('A#','a').replace('B#','b').replace('B#','b').replace('C#','c').replace('D#','d').replace('E#','e').replace('F#','f').replace('G#','g')
+    s=s.replace('A#','a').replace('B#','b').replace('C#','c').replace('D#','d').replace('E#','e').replace('F#','f').replace('G#','g')
     return s
+
 def solution(m, musicinfos):
     answer = [0,'(None)']
     m=shap_to_lower(m)
