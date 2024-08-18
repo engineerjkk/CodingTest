@@ -1,35 +1,41 @@
 from collections import deque
-def solution(board):
-    answer = -1
-    n, m = len(board), len(board[0])
-    direction = [(0, 1), (0, -1), (1, 0), (-1, 0)]
-    visited = [[False]*m for _ in range(n)]
-    q = deque()
-    
-    for x in range(n):
-        for y in range(m):
-            if board[x][y] == "R":
-                sx, sy = x, y
-    
-    q.append((sx, sy, 0))
-    
-    while q:
-        x, y, level = q.popleft()
-        
-        if board[x][y] == "G":
-            answer = level
-            break
-        
-        # 한방향으로 미끄러져 이동
-        for dx, dy in direction:
-            scope = 1
-            while 1:
-                nx, ny = x+dx*scope, y+dy*scope
-                if nx < 0 or nx >= n or ny < 0 or ny >= m or board[nx][ny] == "D":
-                    if visited[nx-dx][ny-dy] == False:
-                        visited[nx-dx][ny-dy] = True
-                        q.append((nx-dx, ny-dy, level+1))
 
-                    break
-                scope += 1
-    return answer
+dy = (0, 1, 0, -1)
+dx = (1, 0, -1, 0)
+
+def getNext(N, M, board, y, x, i):
+    while True:
+        nextY = y + dy[i]
+        nextX = x + dx[i]
+        if(0 <= nextY < N and 0 <= nextX < M and board[nextY][nextX] != 'D'):
+            y = nextY
+            x = nextX
+        else: break
+    return y, x
+
+def sol(N, M, board, Y, X):
+    visited = [[False] * M for _ in range(N)]
+    q = deque([(Y, X)])
+    visited[Y][X] = True
+    answer = 0
+    while q:
+        s = len(q)
+        for _ in range(s):
+            y, x = q.popleft()
+            if(board[y][x] == 'G'): return answer
+            for i in range(4):
+                nextY, nextX = getNext(N, M, board, y, x, i)
+                if(visited[nextY][nextX] == False):
+                    q.append((nextY, nextX))
+                    visited[nextY][nextX] = True
+        answer += 1
+    return -1
+
+def solution(board):
+    answer = 0
+    N = len(board)
+    M = len(board[0])
+    for i in range(N):
+        for j in range(M):
+            if(board[i][j] == 'R'):
+                return sol(N, M, board, i, j)
