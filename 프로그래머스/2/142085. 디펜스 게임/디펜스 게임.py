@@ -1,9 +1,10 @@
-import heapq as hq
+import heapq
 def solution(n, k, enemy):
-    q = enemy[:k]
-    hq.heapify(q)
-    for idx in range(k,len(enemy)):
-        n -= hq.heappushpop(q,enemy[idx])
-        if n < 0:
-            return idx
+    pq=enemy[:k]
+    heapq.heapify(pq)
+    for i in range(k,len(enemy)):
+        heapq.heappush(pq,enemy[i])
+        n-=heapq.heappop(pq)
+        if n<0:
+            return i
     return len(enemy)
