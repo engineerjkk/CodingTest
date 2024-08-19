@@ -1,20 +1,21 @@
 def solution(k, ranges):
+    kk = [k]
+    while k > 1:
+        if k % 2 == 0:
+            k /= 2
+        else:
+            k = 3 * k + 1
+        kk.append(k)
+    integral = []
+    for i in range(len(kk)-1):
+        integral.append((kk[i] + kk[i+1])/2)
     answer = []
-    num = [k]
-    while k != 1 :
-        if k%2 == 0 :
-            k //= 2
-            num.append(k)
-        else :
-            k = k*3 + 1
-            num.append(k)
-    prefix = [0]*(len(num)+1)
-    for i in range(2, len(num)+1) :
-        prefix[i] = prefix[i-1] + (num[i-2] + num[i-1])/2
-    for i in ranges :
-        a, b = i[0]+1, len(num) + i[1]
-        if a > b :
-            answer.append(-1.0)
-        else :
-            answer.append(prefix[b]-prefix[a])
+    for s, e in ranges:
+        e = len(integral) + e
+        if s == e:
+            answer.append(0)
+        elif s > e:
+            answer.append(-1)
+        else:
+            answer.append(sum(integral[s:e]))
     return answer
