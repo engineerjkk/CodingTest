@@ -1,41 +1,36 @@
 from collections import deque
-
-dy = (0, 1, 0, -1)
-dx = (1, 0, -1, 0)
-
-def getNext(N, M, board, y, x, i):
-    while True:
-        nextY = y + dy[i]
-        nextX = x + dx[i]
-        if(0 <= nextY < N and 0 <= nextX < M and board[nextY][nextX] != 'D'):
-            y = nextY
-            x = nextX
-        else: break
-    return y, x
-
-def sol(N, M, board, Y, X):
-    visited = [[False] * M for _ in range(N)]
-    q = deque([(Y, X)])
-    visited[Y][X] = True
-    answer = 0
-    while q:
-        s = len(q)
-        for _ in range(s):
-            y, x = q.popleft()
-            if(board[y][x] == 'G'): return answer
-            for i in range(4):
-                nextY, nextX = getNext(N, M, board, y, x, i)
-                if(visited[nextY][nextX] == False):
-                    q.append((nextY, nextX))
-                    visited[nextY][nextX] = True
-        answer += 1
-    return -1
-
 def solution(board):
-    answer = 0
-    N = len(board)
-    M = len(board[0])
-    for i in range(N):
-        for j in range(M):
-            if(board[i][j] == 'R'):
-                return sol(N, M, board, i, j)
+    n=len(board)
+    m=len(board[0])
+    queue=deque()
+    flag=False
+    distance=[[1e9]*m for _ in range(n)]
+    for i in range(n):
+        for j in range(m):
+            if board[i][j]=='R':
+                queue.append((i,j,0))
+                distance[i][j]=0
+                flag=True
+                break
+        if flag:
+            break
+    dr=[-1,0,1,0]
+    dc=[0,1,0,-1]
+    
+    def in_range(r,c):
+        return -1<r<n and -1<c<m
+
+    while queue:
+        r,c,dis=queue.popleft()
+        if board[r][c]=='G':
+            return dis
+        for i in range(4):
+            nr=r
+            nc=c
+            while in_range(nr+dr[i],nc+dc[i]) and board[nr+dr[i]][nc+dc[i]]!='D':
+                nr+=dr[i]
+                nc+=dc[i]
+            if dis+1<distance[nr][nc]:
+                distance[nr][nc]=dis+1
+                queue.append((nr,nc,dis+1))
+    return -1
