@@ -2,12 +2,12 @@ def solution(s):
     n=len(s)
     min_length=n
     for i in range(1,n//2+1):
-        compressed=[]
         prev=s[:i]
+        compressed=[]
         cnt=1
         for j in range(i,n,i):
             current=s[j:j+i]
-            if prev==current:
+            if current==prev:
                 cnt+=1
             else:
                 if cnt>1:
