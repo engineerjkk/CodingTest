@@ -1,10 +1,11 @@
 from collections import deque
 def solution(board):
+    answer = 0
     n=len(board)
     m=len(board[0])
-    queue=deque()
-    flag=False
     distance=[[1e9]*m for _ in range(n)]
+    flag=False
+    queue=deque()
     for i in range(n):
         for j in range(m):
             if board[i][j]=='R':
@@ -16,10 +17,8 @@ def solution(board):
             break
     dr=[-1,0,1,0]
     dc=[0,1,0,-1]
-    
     def in_range(r,c):
         return -1<r<n and -1<c<m
-
     while queue:
         r,c,dis=queue.popleft()
         if board[r][c]=='G':
