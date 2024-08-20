@@ -1,21 +1,22 @@
 def solution(k, ranges):
-    kk = [k]
-    while k > 1:
-        if k % 2 == 0:
-            k /= 2
-        else:
-            k = 3 * k + 1
-        kk.append(k)
-    integral = []
-    for i in range(len(kk)-1):
-        integral.append((kk[i] + kk[i+1])/2)
     answer = []
-    for s, e in ranges:
-        e = len(integral) + e
-        if s == e:
-            answer.append(0)
-        elif s > e:
+    lst=[k]
+    while k>1:
+        if k%2==0:
+            k/=2
+            lst.append(k)
+        else:
+            k=k*3+1
+            lst.append(k)
+    integral=[]
+    for i in range(len(lst)-1):
+        integral.append((lst[i]+lst[i+1])/2)
+    for s,e in ranges:
+        e=len(integral)+e
+        if e<s:
             answer.append(-1)
+        elif e==s:
+            answer.append(0)
         else:
             answer.append(sum(integral[s:e]))
     return answer
