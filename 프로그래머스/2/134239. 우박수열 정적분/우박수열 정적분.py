@@ -3,7 +3,7 @@ def solution(k, ranges):
     lst=[k]
     while k>1:
         if k%2==0:
-            k/=2
+            k=k/2
             lst.append(k)
         else:
             k=k*3+1
