@@ -1,6 +1,6 @@
 import math
 def solution(n, k):
-    answer=[]
+    answer = []
     lst=[]
     for i in range(1,n+1):
         lst.append(i)
@@ -11,4 +11,5 @@ def solution(n, k):
         del lst[a]
         k=k%math.factorial(n-1)
         n-=1
+        
     return answer
