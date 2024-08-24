@@ -13,10 +13,10 @@ def solution(k, ranges):
         integral.append((lst[i]+lst[i+1])/2)
     for s,e in ranges:
         e=len(integral)+e
-        if e<s:
-            answer.append(-1)
-        elif e==s:
+        if s==e:
             answer.append(0)
+        elif s>e:
+            answer.append(-1)
         else:
             answer.append(sum(integral[s:e]))
     return answer
