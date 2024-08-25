@@ -5,7 +5,7 @@ def solution(n, k):
     for i in range(1,n+1):
         lst.append(i)
     k-=1
-    while n:
+    while lst:
         a=k//math.factorial(n-1)
         answer.append(lst[a])
         del lst[a]
