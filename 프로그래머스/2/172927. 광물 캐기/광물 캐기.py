@@ -6,7 +6,6 @@ def solution(picks, minerals):
     min_minerals=tmp*5
     if min_minerals<len(minerals):
         minerals=minerals[:min_minerals]
-    
     new_minerals=[[0,0,0] for _ in range(min_minerals//5+1)]
     for m in range(len(minerals)):
         if minerals[m]=='diamond':
@@ -15,9 +14,7 @@ def solution(picks, minerals):
             new_minerals[m//5][1]+=1
         else:
             new_minerals[m//5][2]+=1
-    new_minerals.sort(key=lambda x:[x[0],x[1],x[2]],reverse=True)
-    print(new_minerals)
-    
+    new_minerals.sort(key=lambda x : [x[0],x[1],x[2]],reverse=True)
     for m in new_minerals:
         dia,iron,stone=m
         for i in range(len(picks)):
