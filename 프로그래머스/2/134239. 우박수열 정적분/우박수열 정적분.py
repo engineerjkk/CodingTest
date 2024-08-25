@@ -3,7 +3,7 @@ def solution(k, ranges):
     lst=[k]
     while k>1:
         if k%2==0:
-            k=k/2
+            k=k//2
             lst.append(k)
         else:
             k=k*3+1
@@ -15,7 +15,7 @@ def solution(k, ranges):
         e=len(integral)+e
         if s==e:
             answer.append(0)
-        elif s>e:
+        elif e<s:
             answer.append(-1)
         else:
             answer.append(sum(integral[s:e]))
