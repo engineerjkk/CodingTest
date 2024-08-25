@@ -6,7 +6,7 @@ def solution(plans):
         name,start,playtime=plan
         start=int(start[:2])*60+int(start[3:])
         playtime=int(playtime)
-        lst.append((name,start,playtime))
+        lst.append([name,start,playtime])
     lst.sort(key=lambda x: x[1])
     queue=deque(lst)
     lst=[]
@@ -16,7 +16,7 @@ def solution(plans):
             if start<v[0]:
                 lst[i][0]+=playtime
         lst.append([start+playtime,name])
-    lst.sort()
-    for time,name in lst:
+    lst.sort(key=lambda x:x[0])
+    for t,name in lst:
         answer.append(name)
     return answer
