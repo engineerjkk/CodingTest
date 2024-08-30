@@ -6,7 +6,7 @@ def solution(tickets):
         r[i].append(j)
     for i in r.keys():
         r[i].sort()
-    
+    print(r)
     s=["ICN"]
     p=[]
     while s:
