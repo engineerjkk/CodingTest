@@ -1,18 +1,17 @@
 import heapq
-
 def solution(n, works):
     answer = 0
     if sum(works)<=n:
-        answer=0
+        return answer
     else:
-        works=[-i for i in works]
-        heapq.heapify(works)
-        
-        while n>0:
-            heapq.heappush(works,heapq.heappop(works)+1)
-            n-=1
-        
+        wrk=[]
         for i in works:
-            answer+=(i**2)
+            wrk.append(-i)
+        heapq.heapify(wrk)
+        while n:
+            heapq.heappush(wrk,heapq.heappop(wrk)+1)
+            n-=1
+        for i in wrk:
+            answer+=i**2
         
     return answer
