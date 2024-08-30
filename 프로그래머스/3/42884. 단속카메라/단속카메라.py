@@ -1,11 +1,10 @@
 import sys
-import heapq
 def solution(routes):
-    routes.sort(key=lambda x: x[1])
     key=-30001
     answer=0
-    for i in range(len(routes)):
-        if routes[i][0]>key:
+    routes.sort(key=lambda x:x[1])
+    for s,e in routes:
+        if s>key:
             answer+=1
-            key=routes[i][1]
+            key=e
     return answer
