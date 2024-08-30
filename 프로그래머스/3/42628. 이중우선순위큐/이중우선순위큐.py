@@ -1,21 +1,20 @@
-from heapq import heappush,heappop
-
+import heapq
 def solution(operations):
-    heap=[]
-    for i in operations:
-        op,num=i.split()
-        num=int(num)
+    answer = []
+    pq=[]
+    heapq.heapify(pq)
+    for operation in operations:
+        op,num=operation.split()
         if op=='I':
-            heappush(heap,num)
-        elif op=='D' and num== 1:
-            if len(heap)!=0:
-                a=max(heap)
-                heap.remove(a)
+            heapq.heappush(pq,int(num))
+        elif op=='D' and num=='1':
+            if pq:
+                pq.remove(max(pq))
         else:
-            if len(heap)!=0:
-                heappop(heap)
-    if len(heap)==0:
-        answer= [0,0]
+            if pq:
+                heapq.heappop(pq)
+    if not pq:
+        return [0,0]
     else:
-        answer=[max(heap),heappop(heap)]
-    return answer
+        return [max(pq),heapq.heappop(pq)]
+            
