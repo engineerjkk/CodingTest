@@ -1,10 +1,10 @@
 def solution(A, B):
     answer=0
+    cnt=0
     A.sort()
     B.sort()
-    cnt=0
     for i in range(len(A)):
         if A[cnt]<B[i]:
-            answer+=1
             cnt+=1
+            answer+=1
     return answer
