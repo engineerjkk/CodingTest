@@ -6,4 +6,5 @@ def solution(routes):
         if key<s:
             key=e
             answer+=1
+        
     return answer
