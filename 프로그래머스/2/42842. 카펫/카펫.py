@@ -1,4 +1,5 @@
 def solution(brown, yellow):
+    answer = []
     
     def check(x,y):
         tmp_y=x*y
@@ -12,3 +13,4 @@ def solution(brown, yellow):
         for j in range(brown):
             if check(i,j):
                 return sorted([i+2,j+2],reverse=True)
+    return answer
