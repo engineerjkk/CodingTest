@@ -1,18 +1,11 @@
+from collections import Counter
 def solution(k, tangerine):
-    dic={}
-    for i in tangerine:
-        if i in dic:
-            dic[i]+=1
-        else:
-            dic[i]=1
-    dic=sorted(dic.items(),key=lambda x:x[1],reverse=True)
-    answer=0
-    for key,value in dic:
+    answer = 0
+    counter=Counter(tangerine)
+    counter=sorted(counter.items(),key=lambda x:x[1],reverse=True)
+    for key,value in counter:
         k-=value
         answer+=1
         if k<=0:
-            return answer
-    return len(tangerine)
-        
-
-    
+            return answer 
+    return answer
