@@ -1,12 +1,12 @@
 def solution(n, stations, w):
-    answer = 0
-    location=1
     idx=0
-    while location<=n:
-        if idx<len(stations) and stations[idx]-w<=location<=stations[idx]+w:
-            location=stations[idx]+w+1
+    current=1
+    answer=0
+    while current<=n:
+        if idx<len(stations) and stations[idx]-w<=current<=stations[idx]+w:
+            current=stations[idx]+w+1
             idx+=1
         else:
+            current+=2*w+1
             answer+=1
-            location+=w*2+1
     return answer
