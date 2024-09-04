@@ -1,19 +1,20 @@
 def solution(genres, plays):
     answer = []
     dic1={}
+    for i in range(len(genres)):
+        if genres[i] not in dic1:
+            dic1[genres[i]]=[(plays[i],i)]
+        else:
+            dic1[genres[i]].append((plays[i],i))
     dic2={}
-    for i,(g,p) in enumerate(zip(genres,plays)):
-        if g in dic1:
-            dic1[g].append((i,p))
+    for i in range(len(genres)):
+        if genres[i] not in dic2:
+            dic2[genres[i]]=plays[i]
         else:
-            dic1[g]=[(i,p)]
-        if g in dic2:
-            dic2[g]+=p
-        else:
-            dic2[g]=p
-    for k,v in sorted(dic2.items(), key=lambda x:x[1],reverse=True):
-        for i,num in sorted(dic1[k],key=lambda x:x[1],reverse=True)[:2]:
-            answer.append(i)
-    
-    
+            dic2[genres[i]]+=plays[i]
+    print(dic1)
+    print(dic2)
+    for key,value in sorted(dic2.items(),key=lambda x:x[1],reverse=True):
+        for i,p in enumerate(sorted(dic1[key],key=lambda x:x[0], reverse=True)[:2]):
+            answer.append(p[1])
     return answer
