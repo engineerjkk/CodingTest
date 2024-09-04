@@ -1,10 +1,9 @@
-import sys
 def solution(routes):
+    answer = 0
     key=-30001
-    answer=0
     routes.sort(key=lambda x:x[1])
     for s,e in routes:
-        if s>key:
-            answer+=1
+        if key<s:
             key=e
+            answer+=1
     return answer
