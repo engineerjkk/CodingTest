@@ -10,7 +10,7 @@ def solution(n, computers):
         while queue:
             q=queue.popleft()
             for i in range(len(computers[q])):
-                if computers[q][i]==1 and not visit[i]:
+                if not visit[i] and computers[q][i]==1:
                     visit[i]=True
                     queue.append(i)
     
