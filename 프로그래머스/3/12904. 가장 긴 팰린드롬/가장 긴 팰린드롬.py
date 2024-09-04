@@ -5,4 +5,5 @@ def solution(s):
             new_s=s[i:j]
             if new_s==new_s[::-1]:
                 answer=max(answer,len(new_s))
+                
     return answer
