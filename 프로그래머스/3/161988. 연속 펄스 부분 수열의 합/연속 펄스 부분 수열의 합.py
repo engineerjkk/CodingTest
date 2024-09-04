@@ -1,14 +1,16 @@
 def solution(sequence):
-    def check(seq,pulse):
-        answer = -1
+    answer = 0
+    def check(sequence,pulse):
+        ans=0
         tmp=0
-        for i in seq:
+        for s in sequence:
             if tmp<=0:
-                tmp=i*pulse
+                tmp=s*pulse
             else:
-                tmp+=i*pulse
+                tmp+=s*pulse
+            ans=max(ans,tmp)
             pulse*=-1
-            answer=max(answer,tmp)
-        return answer
+        return ans
+    
     answer=max(check(sequence,-1),check(sequence,1))
     return answer
