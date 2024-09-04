@@ -1,17 +1,14 @@
 import heapq
 def solution(n, works):
     answer = 0
+    tmp=[]
     if sum(works)<=n:
-        return answer
-    else:
-        wrk=[]
-        for i in works:
-            wrk.append(-i)
-        heapq.heapify(wrk)
-        while n:
-            heapq.heappush(wrk,heapq.heappop(wrk)+1)
-            n-=1
-        for i in wrk:
-            answer+=i**2
-        
+        return 0
+    for i in range(len(works)):
+        tmp.append(-works[i])
+    heapq.heapify(tmp)
+    for _ in range(n):
+        heapq.heappush(tmp,heapq.heappop(tmp)+1)
+    while tmp:
+        answer+=heapq.heappop(tmp)**2
     return answer
