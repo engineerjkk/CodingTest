@@ -1,7 +1,6 @@
 from collections import deque
 def solution(n, computers):
     answer = 0
-    visit=[False]*n
     
     def bfs(start,visit,computers):
         queue=deque()
@@ -14,6 +13,7 @@ def solution(n, computers):
                     visit[i]=True
                     queue.append(i)
     
+    visit=[False]*n
     for i in range(n):
         if not visit[i]:
             bfs(i,visit,computers)
