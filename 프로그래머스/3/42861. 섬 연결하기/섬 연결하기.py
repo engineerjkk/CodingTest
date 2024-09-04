@@ -3,11 +3,11 @@ def solution(n, costs):
     costs.sort(key=lambda x:x[2])
     link=set([costs[0][0]])
     while len(link)!=n:
-        for v in costs:
-            if v[0] in link and v[1] in link :
+        for a,b,c in costs:
+            if a in link and b in link:
                 continue
-            if v[0] in link or v[1] in link:
-                link.update([v[0],v[1]])
-                answer+=v[2]
+            elif a in link or b in link:
+                link.update([a,b])
+                answer+=c
                 break
     return answer
