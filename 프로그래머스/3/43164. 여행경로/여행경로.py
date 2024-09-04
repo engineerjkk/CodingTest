@@ -1,4 +1,5 @@
 def solution(tickets):
+    answer = []
     dic={}
     for s,e in tickets:
         if s not in dic:
