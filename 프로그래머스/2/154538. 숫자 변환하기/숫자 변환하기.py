@@ -1,7 +1,7 @@
 def solution(x, y, n):
+    answer = 0
     s=set()
     s.add(x)
-    answer=0
     while s:
         if y in s:
             return answer
@@ -14,5 +14,5 @@ def solution(x, y, n):
             if i*3<=y:
                 nxt.add(i*3)
         answer+=1
-        s=nxt   
+        s=nxt
     return -1
