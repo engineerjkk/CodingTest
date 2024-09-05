@@ -6,7 +6,7 @@ def solution(arr):
         for i in range(a,a+l):
             for j in range(b,b+l):
                 if start!=arr[i][j]:
-                    l=l//2
+                    l//=2
                     compression(a,b,l)
                     compression(a+l,b,l)
                     compression(a,b+l,l)
@@ -15,5 +15,4 @@ def solution(arr):
         answer[start]+=1
     
     compression(0,0,len(arr))
-    
     return answer
