@@ -3,7 +3,7 @@ def solution(order):
     idx=0
     n=len(order)
     stack=[]
-    while i<n+1:
+    while i<=n:
         stack.append(i)
         while stack[-1]==order[idx]:
             stack.pop()
@@ -11,4 +11,5 @@ def solution(order):
             if len(stack)==0:
                 break
         i+=1
+        
     return idx
