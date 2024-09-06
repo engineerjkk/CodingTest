@@ -1,12 +1,13 @@
 def solution(n):
     answer=[]
-    def hanoi(src,tgt,inter,n):
+    
+    def hanoi(src,tar,inter,n):
         if n==1:
-            answer.append([src,tgt])
+            answer.append([src,tar])
         else:
-            hanoi(src,inter,tgt,n-1)
-            hanoi(src,tgt,inter,1)
-            hanoi(inter,tgt,src,n-1)
+            hanoi(src,inter,tar,n-1)
+            hanoi(src,tar,inter,1)
+            hanoi(inter,tar,src,n-1)
+    
     hanoi(1,3,2,n)
-            
     return answer
