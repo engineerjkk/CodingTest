@@ -8,7 +8,7 @@ def solution(s):
         cnt=1
         for j in range(i,n,i):
             current=s[j:j+i]
-            if current==prev:
+            if prev==current:
                 cnt+=1
             else:
                 if cnt>1:
