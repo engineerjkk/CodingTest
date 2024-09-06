@@ -1,14 +1,14 @@
-import heapq 
+import heapq
 def solution(book_time):
     answer = 1
-    book_time_ref=[]
+    book_ref=[]
     for s,e in book_time:
-        start=int(s[:2])*60+int(s[3:])
-        end=int(e[:2])*60+int(e[3:])
-        book_time_ref.append((start,end))
-    book_time_ref.sort()
+        s=int(s[:2])*60+int(s[3:])
+        e=int(e[:2])*60+int(e[3:])
+        book_ref.append([s,e])
+    book_ref.sort()
     pq=[]
-    for s,e in book_time_ref:
+    for s,e in book_ref:
         if not pq:
             heapq.heappush(pq,e+10)
             continue
