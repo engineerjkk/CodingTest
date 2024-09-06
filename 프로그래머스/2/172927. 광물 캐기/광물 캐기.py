@@ -1,33 +1,33 @@
 def solution(picks, minerals):
     answer = 0
-    tmp=0
+    total_picks=0
     for i in picks:
-        tmp+=i
-    min_minerals=tmp*5
-    if min_minerals<len(minerals):
-        minerals=minerals[:min_minerals]
-    new_minerals=[[0,0,0] for _ in range(min_minerals//5+1)]
-    for m in range(len(minerals)):
-        if minerals[m]=="diamond":
-            new_minerals[m//5][0]+=1
-        elif minerals[m]=="iron":
-            new_minerals[m//5][1]+=1
+        total_picks+=i
+    total_picks*=5
+    if total_picks<len(minerals):
+        minerals=minerals[:total_picks]
+    new_minerals=[[0,0,0] for _ in range(total_picks//5+1)]
+    for i in range(len(minerals)):
+        if minerals[i]=='diamond':
+            new_minerals[i//5][0]+=1
+        elif minerals[i]=='iron':
+            new_minerals[i//5][1]+=1
         else:
-            new_minerals[m//5][2]+=1
+            new_minerals[i//5][2]+=1
     new_minerals.sort(key=lambda x:[x[0],x[1],x[2]],reverse=True)
-    for m in new_minerals:
-        dia,iron,stone=m
-        for i in range(len(picks)):
-            if picks[i]>0 and i==0:
+    for mineral in new_minerals:
+        dia,iron,stone=mineral
+        for i in range(3):
+            if i==0 and picks[i]>0:
+                picks[i]-=1
                 answer+=dia+iron+stone
-                picks[i]-=1
                 break
-            elif picks[i]>0 and i==1:
+            if i==1 and picks[i]>0:
+                picks[i]-=1
                 answer+=dia*5+iron+stone
-                picks[i]-=1
                 break
-            elif picks[i]>0 and i==2:
+            if i==2 and picks[i]>0:
+                picks[i]-=1
                 answer+=dia*25+iron*5+stone
-                picks[i]-=1
-                break
+                
     return answer
