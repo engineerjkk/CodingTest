@@ -1,21 +1,11 @@
 def solution(s):
-    answer = -1
-    tmp=[ord(s[0])]
-    s=s[1:]
-    ord_s=[]
-    for i in s:
-        ord_s.append(ord(i))
-    
-    for i in ord_s:
-        if len(tmp)>0:
-            if tmp[-1]==i:
-                tmp.pop()
-            else:
-                tmp.append(i)
+    lst=[s[0]]
+    for i in range(1,len(s)):
+        if lst and lst[-1]==s[i]:
+            lst.pop()
         else:
-            tmp.append(i)
-                
-    if len(tmp)==0:
-        return 1
-    else:
+            lst.append(s[i])
+    if lst:
         return 0
+    else:
+        return 1
