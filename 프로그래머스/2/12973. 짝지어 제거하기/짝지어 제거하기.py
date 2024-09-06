@@ -9,3 +9,4 @@ def solution(s):
         return 0
     else:
         return 1
+
