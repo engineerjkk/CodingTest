@@ -11,8 +11,8 @@ while left<=right:
     for i in lst:
         tmp+=min(i,mid)
     if tmp<=m:
-        left=mid+1
         answer=mid
+        left=mid+1
     else:
         right=mid-1
 print(answer)
