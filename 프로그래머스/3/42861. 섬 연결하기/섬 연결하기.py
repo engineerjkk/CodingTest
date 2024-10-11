@@ -4,9 +4,9 @@ def solution(n, costs):
     costs.sort(key=lambda x:x[2])
     while len(link)!=n:
         for a,b,c in costs:
-            if a in link and b in link:
+            if (a in link) and (b in link):
                 continue
-            if a in link or b in link:
+            elif (a in link) or (b in link):
                 link.update([a,b])
                 answer+=c
                 break
