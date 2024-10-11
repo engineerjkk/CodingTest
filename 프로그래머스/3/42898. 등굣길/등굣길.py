@@ -5,7 +5,7 @@ def solution(m, n, puddles):
         for j in range(1,m+1):
             if i==1 and j==1:
                 continue
-            if [j,i] in puddles:
+            elif [j,i] in puddles:
                 space[i][j]=0
             else:
                 space[i][j]=space[i-1][j]+space[i][j-1]
