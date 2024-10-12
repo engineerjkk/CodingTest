@@ -4,13 +4,12 @@ def solution(n, times):
     end=max(times)*n
     while start<=end:
         mid=(start+end)//2
-        tmp=0
+        total=0
         for time in times:
-            tmp+=mid//time
-        
-        if tmp>=n:
-            end=mid-1
+            total+=mid//time
+        if total>=n:
             answer=mid
+            end=mid-1
         else:
             start=mid+1
     return answer
