@@ -1,60 +1,46 @@
+import sys
+input = sys.stdin.readline
 from collections import deque
 
-def find_max_safe_distance(grid, n, m):
-    # 8방향 이동 (상하좌우 + 대각선)
-    dx = [-1, -1, -1, 0, 0, 1, 1, 1]
-    dy = [-1, 0, 1, -1, 1, -1, 0, 1]
-    
-    # 상어 위치 찾기
-    sharks = []
+def solution(space,n,m):
+    sharks=[]
     for i in range(n):
         for j in range(m):
-            if grid[i][j] == 1:
-                sharks.append((i, j))
+            if space[i][j]==1:
+                sharks.append((i,j))
+    dr=[-1,-1,0,1,1,1,0,-1]
+    dc=[0,1,1,1,0,-1,-1,-1]
+
+    def in_range(r,c):
+        return -1<r<n and -1<c<m
     
-    # BFS로 각 빈 칸의 안전 거리 계산
     def bfs():
-        distances = [[-1] * m for _ in range(n)]
-        queue = deque()
-        
-        # 상어 위치를 시작점으로 설정
+        distance=[[-1]*m for _ in range(n)]
+        queue=deque()
         for shark in sharks:
-            x, y = shark
-            distances[x][y] = 0
-            queue.append((x, y))
-        
+            r,c=shark
+            distance[r][c]=0
+            queue.append((r,c))
         while queue:
-            x, y = queue.popleft()
-            
-            # 8방향 탐색
+            r,c=queue.popleft()
             for i in range(8):
-                nx = x + dx[i]
-                ny = y + dy[i]
-                
-                # 범위 체크 및 미방문 체크
-                if 0 <= nx < n and 0 <= ny < m and distances[nx][ny] == -1:
-                    distances[nx][ny] = distances[x][y] + 1
-                    queue.append((nx, ny))
-        
-        return distances
-    
-    # 모든 칸의 안전 거리 계산
-    distances = bfs()
-    
-    # 안전 거리의 최댓값 찾기
-    max_distance = 0
+                nr=r+dr[i]
+                nc=c+dc[i]
+                if in_range(nr,nc) and distance[nr][nc]==-1:
+                    distance[nr][nc]=distance[r][c]+1
+                    queue.append((nr,nc))
+        return distance
+
+    distance=bfs()
+    max_distance=0
     for i in range(n):
         for j in range(m):
-            if grid[i][j] == 0:  # 빈 칸인 경우만 고려
-                max_distance = max(max_distance, distances[i][j])
-    
+            if space[i][j]==0:
+                max_distance=max(max_distance,distance[i][j])
     return max_distance
 
-# 입력 처리
-n, m = map(int, input().split())
-grid = []
+n,m=map(int,input().split())
+space=[]
 for _ in range(n):
-    grid.append(list(map(int, input().split())))
-
-# 결과 출력
-print(find_max_safe_distance(grid, n, m))
+    space.append(list(map(int,input().split())))
+print(solution(space,n,m))
