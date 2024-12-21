@@ -2,8 +2,8 @@ import sys
 input = sys.stdin.readline
 n=int(input())
 
-stack=[]
 score=0
+stack=[]
 for _ in range(n):
     info=list(map(int,input().split()))
     if info[0]==0:
@@ -13,9 +13,9 @@ for _ in range(n):
                 score+=a
             else:
                 stack.append((a,t-1))
+    
     if info[0]==1:
-        a=info[1]
-        t=info[2]
+        a,t=info[1],info[2]
         if t==1:
             score+=a
         else:
