@@ -5,7 +5,7 @@ n,t=map(int,input().split())
 a=[]
 for i in range(1,2*n+1):
     a.append(i)
-for i in range(2*n-1,1,-1):
+for i in reversed(range(2,2*n)):
     a.append(i)
 
 t-=1
