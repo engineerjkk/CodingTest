@@ -12,9 +12,10 @@ courses.sort()
 pq=[]
 heapq.heappush(pq,courses[0][1])
 room=1
+
 for i in range(1,n):
-    earliest=pq[0]
-    if earliest<=courses[i][0]:
+    eariest=pq[0]
+    if eariest<=courses[i][0]:
         heapq.heappop(pq)
     else:
         room+=1
