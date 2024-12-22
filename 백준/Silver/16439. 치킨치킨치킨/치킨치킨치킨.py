@@ -1,5 +1,5 @@
 import sys
-input = sys.stdin.readline
+input=sys.stdin.readline
 from itertools import combinations
 
 n,m=map(int,input().split())
