@@ -15,10 +15,9 @@ for i in range(n):
         dic[b[i]]=[0,0]
     dic[b[i]][1]+=1
 
-answer=0
+cnt=0
 for key,value in dic.items():
     supply=value[0]
     demand=value[1]
-    answer+=min(supply,demand)
-print(n-answer)
-    
+    cnt+=min(supply,demand)
+print(n-cnt)
