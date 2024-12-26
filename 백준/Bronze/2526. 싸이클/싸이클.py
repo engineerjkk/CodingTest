@@ -2,14 +2,13 @@ import sys
 input = sys.stdin.readline
 N,P=map(int,input().split())
 n=N
-order={}
+dic={}
 count=0
-
 while True:
-    if n not in order:
-        order[n]=count
-        n=n*N%P
+    n=n*N%P
+    if n not in dic:
+        dic[n]=count
         count+=1
     else:
-        print(count-order[n])
+        print(count-dic[n])
         break
