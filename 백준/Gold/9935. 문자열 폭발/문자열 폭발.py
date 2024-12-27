@@ -1,4 +1,4 @@
-import sys 
+import sys
 input = sys.stdin.readline
 
 alpha=input().strip()
@@ -11,6 +11,7 @@ for a in alpha:
         if ''.join(stack[-len(fire):])==fire:
             for _ in range(len(fire)):
                 stack.pop()
+
 if len(stack)>0:
     print(''.join(stack))
 else:
