@@ -1,20 +1,21 @@
 import sys
 input = sys.stdin.readline
 
-N,L,D=map(int,input().split())
+n,l,d=map(int,input().split())
+MAX=20*185
 
-check=[False]*5000
+check=[False]*MAX
+
 
 idx=0
-for _ in range(N):
-    for _ in range(L):
+for _ in range(n):
+    for _ in range(l):
         check[idx]=True
         idx+=1
     for _ in range(5):
         idx+=1
 
-for i in range(0,5000,D):
+for i in range(0,MAX,d):
     if not check[i]:
         print(i)
         break
-  
