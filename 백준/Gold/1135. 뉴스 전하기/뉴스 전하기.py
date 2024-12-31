@@ -14,15 +14,15 @@ def dfs(now):
         return 0
     
     times=[]
-    for c in child[now]:
-        times.append(1+dfs(c))
+    for v in child[now]:
+        times.append(1+dfs(v))
     
     times.sort(reverse=True)
 
     max_time=0
     for i,t in enumerate(times):
         max_time=max(max_time,i+t)
+    
     return max_time
 
 print(dfs(0))
-
