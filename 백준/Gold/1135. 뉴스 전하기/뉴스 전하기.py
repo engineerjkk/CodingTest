@@ -2,22 +2,27 @@ import sys
 input = sys.stdin.readline
 
 n=int(input())
-par=list(map(int,input().split()))
+parents=list(map(int,input().split()))
 
 child=[[] for _ in range(n)]
 for i in range(1,n):
-    child[par[i]].append(i)
+    child[parents[i]].append(i)
 
-d=[0]*n
-def dfs(u):
+def dfs(now):
+
+    if not child[now]:
+        return 0
+    
     times=[]
-    for v in child[u]:
-        dfs(v)
-        times.append(d[v])
+    for c in child[now]:
+        times.append(1+dfs(c))
+    
     times.sort(reverse=True)
-    d[u]=0
-    for i in range(len(times)):
-        d[u]=max(d[u],i+1+times[i])
 
-dfs(0)
-print(d[0])
+    max_time=0
+    for i,t in enumerate(times):
+        max_time=max(max_time,i+t)
+    return max_time
+
+print(dfs(0))
+
