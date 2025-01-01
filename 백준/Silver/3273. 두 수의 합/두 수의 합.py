@@ -14,7 +14,7 @@ for i in range((x+1)//2):
     if x-i>=1000000:
         continue
     answer+=count[i]*count[x-i]
+
 if x%2==0:
     answer+=count[x//2]*(count[x//2]-1)//2
 print(answer)
-
