@@ -1,17 +1,17 @@
 import sys 
-input = sys.stdin.readline 
+input = sys.stdin.readline
 from collections import deque 
 
 n=int(input())
 m=int(input())
 graph=[[] for _ in range(n)]
-count=[0]*n 
 
+count=[0]*n
 for _ in range(m):
     x,y,k=map(int,input().split())
     x-=1
     y-=1
-
+    
     graph[x].append((y,k))
     count[y]+=1
 
@@ -23,11 +23,12 @@ for i in range(n):
     if count[i]==0:
         queue.append(i)
 
-while len(queue)!=0:
+while queue:
     u=queue.popleft()
+
     for v,w in graph[u]:
         answer[v]+=w*answer[u]
-        count[v]-=1 
+        count[v]-=1
         if count[v]==0:
             queue.append(v)
 
