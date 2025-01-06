@@ -3,16 +3,15 @@ input = sys.stdin.readline
 
 t=int(input())
 
-def max_subarray(arr):
-    max_sum=arr[0]
-    current_sum=arr[0]
-
-    for num in arr[1:]:
-        current_sum=max(num,current_sum+num)
-        max_sum=max(max_sum,current_sum)
-    return max_sum
-
 for _ in range(t):
     n=int(input())
-    lst=list(map(int,input().split()))
-    print(max_subarray(lst))
+    arr=list(map(int,input().split()))
+
+    current_arr=arr[0]
+    max_arr=arr[0]
+
+    for num in arr[1:]:
+        current_arr=max(num,current_arr+num)
+        max_arr=max(max_arr,current_arr)
+    
+    print(max_arr)
