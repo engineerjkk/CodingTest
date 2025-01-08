@@ -1,6 +1,6 @@
 import sys 
 input = sys.stdin.readline 
-import heapq
+import heapq 
 
 t=int(input())
 for _ in range(t):
@@ -8,7 +8,6 @@ for _ in range(t):
     max_pq=[]
     min_pq=[]
     count={}
-
     for _ in range(k):
         cmd,num=input().split()
         num=int(num)
@@ -27,7 +26,7 @@ for _ in range(t):
                     while max_pq and -max_pq[0] not in count:
                         heapq.heappop(max_pq)
                     if max_pq:
-                        max_num=-heapq.heappop(max_pq)
+                        max_num = -heapq.heappop(max_pq)
                         count[max_num]-=1
                         if count[max_num]==0:
                             del count[max_num]
@@ -35,15 +34,15 @@ for _ in range(t):
                     while min_pq and min_pq[0] not in count:
                         heapq.heappop(min_pq)
                     if min_pq:
-                        min_num=heapq.heappop(min_pq)
+                        min_num = heapq.heappop(min_pq)
                         count[min_num]-=1
                         if count[min_num]==0:
-                            del count[min_num]
-    while max_pq and -max_pq[0] not in count:
-        heapq.heappop(max_pq)
+                            del count[min_num]    
+    while max_pq and -max_pq[0] not in count:  
+        heapq.heappop(max_pq)    
     while min_pq and min_pq[0] not in count:
         heapq.heappop(min_pq)
-        
+    
     if not max_pq or not min_pq:
         print("EMPTY")
     else:
