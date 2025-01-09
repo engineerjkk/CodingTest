@@ -2,25 +2,25 @@ import sys
 input = sys.stdin.readline 
 
 n=int(input())
-s=[]
+S=[]
 for _ in range(n):
-    s.append(input().strip())
-s=list(set(s))
+    S.append(input().strip())
+S=list(set(S))
 
-prefix=[False]*len(s)
+prefix=[False]*(len(S))
 
-for i in range(len(s)):
-    for j in range(len(s)):
+for i in range(len(S)):
+    for j in range(len(S)):
         if i==j:
-            continue 
-        if len(s[i])>=len(s[j]):
             continue
-        if s[i]==s[j][:len(s[i])]:
-            prefix[i]=True
+        if len(S[i])>len(S[j]):
+            continue 
+        if S[i]==S[j][:len(S[i])]:
+            prefix[i]=True 
             break 
 
 count=0
-for i in range(len(s)):
+for i in range(len(S)):
     if not prefix[i]:
-        count+=1 
+        count+=1
 print(count)
