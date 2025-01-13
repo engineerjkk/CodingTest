@@ -5,11 +5,9 @@ t=int(input())
 
 for _ in range(t):
     n=int(input())
-    arr=list(map(int,input().split()))
-
-    dp=[0]*n 
-    dp[0]=arr[0]
-    
+    lst=list(map(int,input().split()))
+    dp=[-1e9]*n 
+    dp[0]=lst[0]
     for i in range(1,n):
-        dp[i]=max(arr[i],arr[i]+dp[i-1])
+        dp[i]=max(lst[i],dp[i-1]+lst[i])
     print(max(dp))
