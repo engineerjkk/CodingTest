@@ -1,22 +1,27 @@
-from collections import deque
-import sys
-input = sys.stdin.readline
-n,k = map(int,input().split())
-seq = tuple(map(int,input().split()))
+import sys 
+input = sys.stdin.readline 
+from collections import deque 
 
-q = deque([(seq, 0)])
-visited = set()
-while q:
-    cur, d = q.popleft()
+n,k=map(int,input().split())
+sequence=tuple(map(int,input().split()))
+queue=deque()
+queue.append((sequence,0))
+visit=set()
 
-    if cur == tuple(range(1,n+1)):
-        print(d)
-        break
+flag=False
+while queue:
+    current,times=queue.popleft()
+
+    if current==tuple(range(1,n+1)):
+        flag=True 
+        break 
 
     for i in range(n-k+1):
-        next_seq = cur[:i]+cur[i:i+k][::-1]+cur[i+k:]
-        if next_seq not in visited:
-            visited.add(next_seq)
-            q.append((next_seq, d+1))
+        next_sequence=current[:i]+current[i:i+k][::-1]+current[i+k:]
+        if next_sequence not in visit:
+            visit.add(next_sequence)
+            queue.append((next_sequence,times+1))
+if flag:
+    print(times)
 else:
     print(-1)
