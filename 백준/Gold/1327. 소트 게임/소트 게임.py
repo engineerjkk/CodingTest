@@ -4,23 +4,24 @@ from collections import deque
 
 n,k=map(int,input().split())
 sequence=tuple(map(int,input().split()))
+visit=set() 
 queue=deque()
 queue.append((sequence,0))
-visit=set()
 
 flag=False
 while queue:
-    current,times=queue.popleft()
+    seq,times=queue.popleft() 
 
-    if current==tuple(range(1,n+1)):
-        flag=True 
-        break 
+    if seq==tuple(range(1,n+1)):
+        flag=True
+        break
 
     for i in range(n-k+1):
-        next_sequence=current[:i]+current[i:i+k][::-1]+current[i+k:]
-        if next_sequence not in visit:
-            visit.add(next_sequence)
-            queue.append((next_sequence,times+1))
+        next_seq=seq[:i]+seq[i:i+k][::-1]+seq[i+k:]
+        if next_seq not in visit:
+            visit.add(next_seq)
+            queue.append((next_seq,times+1))
+
 if flag:
     print(times)
 else:
