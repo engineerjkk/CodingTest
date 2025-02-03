@@ -1,6 +1,6 @@
 def can_cross(stones, k, people):
     # stones 배열을 복사하여 사용
-    temp = stones[:]
+    temp = stones
     
     # 연속된 0의 개수를 세는 변수
     zero_count = 0
