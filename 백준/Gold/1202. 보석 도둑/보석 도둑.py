@@ -1,13 +1,11 @@
-import sys
-input = sys.stdin.readline
+import sys 
+input = sys.stdin.readline 
 import heapq 
 
 n,k=map(int,input().split())
-
 diamonds=[]
 for _ in range(n):
-    m,v=map(int,input().split())
-    diamonds.append((m,v))
+    diamonds.append(list(map(int,input().split())))
 
 bags=[]
 for _ in range(k):
@@ -16,15 +14,13 @@ for _ in range(k):
 diamonds.sort()
 bags.sort()
 
-answer=0
 pq=[]
 idx=0
-
+answer=0
 for bag in bags:
     while idx<n and diamonds[idx][0]<=bag:
         heapq.heappush(pq,-diamonds[idx][1])
-        idx+=1
-    
+        idx+=1 
     if pq:
         answer-=heapq.heappop(pq)
 print(answer)
