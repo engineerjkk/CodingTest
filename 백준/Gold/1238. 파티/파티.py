@@ -1,51 +1,44 @@
-import sys
 import heapq
+import sys
 input = sys.stdin.readline
-n,m,x=map(int,input().split())
-lst=[[] for _ in range(n)]
-for _ in range(m):
-    a,b,time=map(int,input().split())
-    lst[a-1].append((b-1,time))
-distance=[1e9]*(n)
 
+def dijkstra(start, graph, N):
+    distances = [float('inf')] * (N + 1)
+    distances[start] = 0
+    queue = []
+    heapq.heappush(queue, (0, start))
 
-def dijkstra_departure(start):
-    queue=[]
-    heapq.heappush(queue,(0,start))
-    distance[start]=0
     while queue:
-        dis,a=heapq.heappop(queue)
-        if distance[a]<dis:
+        curr_dist, curr = heapq.heappop(queue)
+        
+        if distances[curr] < curr_dist:
             continue
-        for b,time in lst[a]:
-            cost=dis+time
-            if cost<distance[b]:
-                distance[b]=cost
-                heapq.heappush(queue,(cost,b))
+            
+        for next_node, weight in graph[curr]:  # 여기만 수정
+            distance = curr_dist + weight
+            
+            if distance < distances[next_node]:
+                distances[next_node] = distance
+                heapq.heappush(queue, (distance, next_node))
+                
+    return distances
 
-def dijkstra_back(start):
-    queue=[]
-    heapq.heappush(queue,(0,start))
-    distance2=[1e9]*(n)
-    distance2[start]=0
-    while queue:
-        dis,a=heapq.heappop(queue)
-        if distance2[a]<dis:
-            continue
-        for b,time in lst[a]:
-            cost=dis+time
-            if cost<distance2[b]:
-                distance2[b]=cost
-                heapq.heappush(queue,(cost,b))
-    return distance2[x-1]
+def solution():
+    N, M, X = map(int, input().split())
+    
+    # 리스트로 그래프 초기화
+    graph = [[] for _ in range(N + 1)]
+    reverse_graph = [[] for _ in range(N + 1)]
+    
+    # 리스트 방식으로 그래프 구성
+    for _ in range(M):
+        start, end, time = map(int, input().split())
+        graph[start].append((end, time))
+        reverse_graph[end].append((start, time))
+    
+    from_party = dijkstra(X, graph, N)
+    to_party = dijkstra(X, reverse_graph, N)
+    
+    return max(from_party[i] + to_party[i] for i in range(1, N + 1))
 
-dijkstra_departure(x-1)
-departure=distance[0]
-back=[]
-for i in range(n):
-    back.append(dijkstra_back(i))
-
-answer=[]
-for i,j in zip(distance,back):
-    answer.append(i+j)
-print(max(answer))
+print(solution())
