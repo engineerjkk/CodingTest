@@ -5,6 +5,7 @@ t=int(input())
 for _ in range(t):
     n,m=map(int,input().split())
     graph=[[] for _ in range(n)]
+
     for _ in range(m):
         u,v,w=map(int,input().split())
         u-=1
@@ -13,10 +14,11 @@ for _ in range(t):
         graph[v].append((u,w))
     
     visit=[False]*n
-    dp=[0]*n
+    dp=[0]*n 
+
     def dfs(u):
         visit[u]=True 
-        is_leaf=True
+        is_leaf=True 
         for v,w in graph[u]:
             if not visit[v]:
                 dfs(v)
@@ -24,6 +26,6 @@ for _ in range(t):
                 is_leaf=False 
         if u!=0 and is_leaf:
             dp[u]=1e9
+    
     dfs(0)
     print(dp[0])
-        
