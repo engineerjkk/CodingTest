@@ -1,27 +1,28 @@
-from collections import deque
+import sys 
+input = sys.stdin.readline 
+from collections import deque 
 
 n,m=map(int,input().split())
-lst=[[] for _ in range(n+1)]
+graph=[[] for _ in range(n+1)]
 for _ in range(n-1):
-    a,b,d=map(int,input().split())
-    lst[a].append((b,d))
-    lst[b].append((a,d))
+    u,v,w=map(int,input().split())
+    graph[u].append((v,w))
+    graph[v].append((u,w))
 answer=[]
 for _ in range(m):
     a,b=map(int,input().split())
-    visit=[False]*(n+1)
-    dis=0
     queue=deque()
     queue.append((a,0))
+    visit=[False]*(n+1)
     visit[a]=True
     while queue:
-        r,distance=queue.popleft()
-        if r==b:
-            break
-        for n_a,distance2 in lst[r]:
-            if not visit[n_a]:
-                visit[n_a]=True
-                queue.append((n_a,distance+distance2))
-    answer.append(distance)
-for i in answer:
-    print(i)
+        now,dis=queue.popleft()
+        if now==b:
+            break 
+        for v,w in graph[now]:
+            if not visit[v]:
+                visit[v]=True 
+                queue.append((v,dis+w))
+    answer.append(dis)
+for i in range(len(answer)):
+    print(answer[i])
