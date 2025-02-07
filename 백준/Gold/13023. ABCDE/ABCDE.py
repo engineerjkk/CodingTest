@@ -12,12 +12,11 @@ def dfs(graph,visit,u,depth):
     if depth==4:
         return True 
     for v in graph[u]:
-        if visit[v]:
-            continue 
-        visit[v]=True 
-        if dfs(graph,visit,v,depth+1):
-            return True 
-        visit[v]=False
+        if not visit[v]:
+            visit[v]=True 
+            if dfs(graph,visit,v,depth+1):
+                return True 
+            visit[v]=False
     return False
 
 for i in range(n):
